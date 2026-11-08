@@ -1,0 +1,22 @@
+{
+  "name": "SiVETRA - Rumah Sakit Hewan UPTD Veteriner NTT",
+  "short_name": "SiVETRA",
+  "description": "Sistem Informasi Veteriner Terintegrasi Rumah Sakit Hewan",
+  "start_url": "/sivetra/",
+  "scope": "/sivetra/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#54217b",
+  "icons": [
+    {
+      "src": "/sivetra/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/sivetra/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
