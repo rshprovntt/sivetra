@@ -3292,6 +3292,57 @@
         return true;
        }
 
+       // ID anonim disimpan pada browser agar kunjungan unik dapat dihitung.
+       function getVisitorId() {
+        let visitorId = localStorage.getItem('sivetra_visitor_id');
+        if (!visitorId) {
+         visitorId = (window.crypto && crypto.randomUUID)
+          ? crypto.randomUUID()
+          : 'sv-' + Date.now() + '-' + Math.random().toString(36).slice(2);
+         localStorage.setItem('sivetra_visitor_id', visitorId);
+        }
+        return visitorId;
+       }
+
+       // Mengirim satu catatan untuk setiap halaman yang dibuka.
+       function trackPageVisit() {
+        const callbackName = 'sivetraTrackCallback_' + Date.now() + '_' +
+         Math.random().toString(36).slice(2);
+        const script = document.createElement('script');
+        let finished = false;
+        const cleanup = () => {
+         if (finished) return;
+         finished = true;
+         clearTimeout(timeout);
+         script.remove();
+         try { delete window[callbackName]; }
+         catch (error) { window[callbackName] = undefined; }
+        };
+        window[callbackName] = (result) => {
+         cleanup();
+         if (!result || result.success === false) {
+          console.warn('Pencatatan kunjungan SiVETRA gagal:', result);
+         }
+        };
+        script.onerror = () => {
+         cleanup();
+         console.warn('Tidak dapat mengirim catatan kunjungan SiVETRA.');
+        };
+        const timeout = setTimeout(() => {
+         cleanup();
+         console.warn('Waktu pencatatan kunjungan SiVETRA habis.');
+        }, 15000);
+        const params = new URLSearchParams({
+         action: 'track',
+         visitorId: getVisitorId(),
+         page: window.location.pathname + window.location.search,
+         callback: callbackName,
+         t: Date.now()
+        });
+        script.src = API_URL + '?' + params.toString();
+        document.head.appendChild(script);
+       }
+
        function requestStatisticsJSONP() {
         return new Promise((resolve, reject) => {
          const callbackName = 'sivetraStatsCallback_' + Date.now() + '_' +
@@ -3323,7 +3374,7 @@
           reject(new Error('Waktu tunggu API statistik SiVETRA habis.'));
          }, 15000);
 
-         script.src = API_URL + '?callback=' +
+         script.src = API_URL + '?action=stats&callback=' +
           encodeURIComponent(callbackName) + '&t=' + Date.now();
          document.head.appendChild(script);
         });
@@ -3353,6 +3404,7 @@
         }
        }
 
+       trackPageVisit();
        loadStatistics();
        window.setInterval(loadStatistics, 5 * 60 * 1000);
       })();
