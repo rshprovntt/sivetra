@@ -1,0 +1,1117 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dokter Hewan | SiVETRA</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        :root {
+            --ungu: #6036A0;
+            --ungu-tua: #43206B;
+            --ungu-gelap: #2D1748;
+            --ungu-muda: #F3EDFC;
+            --emas: #E8B94F;
+            --putih: #FFFFFF;
+            --teks: #302641;
+            --abu: #756D80;
+            --garis: #E8DFF1;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--teks);
+            background:
+                radial-gradient(circle at 4% 20%, rgba(243,237,252,.65), transparent 24%),
+                #FCFAFE;
+            line-height: 1.7;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* HEADER */
+        .topbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255,255,255,.97);
+            backdrop-filter: blur(10px);
+            border-bottom: 3px solid var(--emas);
+            box-shadow: 0 4px 18px rgba(45,23,72,.10);
+        }
+
+        .topbar-inner {
+            max-width: 1200px;
+            margin: auto;
+            padding: 12px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+        }
+
+        .logo-pemprov {
+            width: 50px;
+            height: 55px;
+            object-fit: contain;
+        }
+
+        .divider {
+            width: 1px;
+            height: 45px;
+            background: #DED5EA;
+        }
+
+        .logo-sivetra {
+            width: 140px;
+            max-height: 60px;
+            object-fit: contain;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            font-size: 12px;
+            font-weight: 700;
+            padding: 10px 15px;
+            border-radius: 10px;
+            background: var(--ungu);
+            box-shadow: 0 4px 0 var(--ungu-tua);
+            transition: .2s;
+        }
+
+        .back-link:hover {
+            color: var(--ungu-gelap);
+            background: #E7D9F7;
+            transform: translateY(-2px);
+        }
+
+        /* INTRO */
+        .intro {
+            position: relative;
+            overflow: hidden;
+            padding: 62px 24px 55px;
+            text-align: center;
+            background:
+                radial-gradient(circle at 10% 10%, rgba(232,185,79,.14), transparent 25%),
+                linear-gradient(125deg, #F8F4FF, #FFFFFF 55%, #F1E8FC);
+        }
+
+        .intro::before,
+        .intro::after {
+            content: "";
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .intro::before {
+            width: 230px;
+            height: 230px;
+            left: -90px;
+            bottom: -145px;
+            background: rgba(96,54,160,.07);
+        }
+
+        .intro::after {
+            width: 190px;
+            height: 190px;
+            right: -65px;
+            top: -115px;
+            background: rgba(232,185,79,.12);
+        }
+
+        .intro > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .eyebrow {
+            display: inline-block;
+            padding: 7px 14px;
+            border: 1px solid #E4D7F2;
+            border-radius: 30px;
+            background: rgba(255,255,255,.72);
+            color: var(--ungu);
+            font-family: 'Poppins', sans-serif;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 2.5px;
+        }
+
+        .intro h1 {
+            margin: 14px 0 10px;
+            color: var(--ungu-gelap);
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(28px, 4vw, 42px);
+            font-weight: 900;
+            line-height: 1.25;
+            text-shadow: 2px 3px 0 rgba(96,54,160,.12);
+        }
+
+        .intro p {
+            max-width: 670px;
+            margin: auto;
+            color: var(--abu);
+            font-size: 13px;
+        }
+
+        /* DAFTAR DOKTER */
+        main {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            column-gap: 22px;
+            row-gap: 0;
+            max-width: 1160px;
+            margin: auto;
+            padding: 48px 24px 76px;
+        }
+
+        main > .list-heading,
+        main > .list-subheading {
+            grid-column: 1 / -1;
+        }
+
+        .list-heading {
+            display: flex;
+            align-items: center;
+            gap: 11px;
+            margin-bottom: 8px;
+            color: var(--ungu-gelap);
+            font-family: 'Poppins', sans-serif;
+            font-size: 23px;
+            font-weight: 800;
+        }
+
+        .list-heading::before {
+            content: "";
+            width: 5px;
+            height: 29px;
+            border-radius: 8px;
+            background: linear-gradient(180deg,var(--emas),#D69B2B);
+        }
+
+        .list-subheading {
+            margin-bottom: 27px;
+            color: var(--abu);
+            font-size: 12px;
+        }
+
+        /* KARTU PROFIL DOKTER */
+        .doctor-profile {
+            position: relative;
+            display: grid;
+            grid-template-columns: 125px minmax(0, 1fr);
+            gap: 16px;
+            align-content: start;
+            margin-bottom: 22px;
+            padding: 18px;
+            border: 1px solid #E9DFF3;
+            border-radius: 22px;
+            background: linear-gradient(125deg,#FFFFFF 55%,#FBF8FF);
+            box-shadow: 0 8px 25px rgba(45,23,72,.07);
+            overflow: hidden;
+            transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+        }
+
+        .doctor-profile::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(180deg,var(--emas),var(--ungu));
+        }
+
+        .doctor-profile:hover {
+            transform: translateY(-4px);
+            border-color: #D8C4F0;
+            box-shadow: 0 15px 32px rgba(45,23,72,.12);
+        }
+
+        .doctor-photo {
+            width: 125px;
+            min-height: 155px;
+            overflow: hidden;
+            border-radius: 16px;
+            background: linear-gradient(145deg,#F2EAFB,#E6D9F5);
+            border: 5px solid #F5F0FA;
+        }
+
+        .doctor-photo img {
+            display: block;
+            width: 100%;
+            height: 165px;
+            object-fit: cover;
+            object-position: center top;
+            border-radius: 11px;
+            transition: transform .4s ease;
+        }
+
+        .doctor-profile:hover .doctor-photo img {
+            transform: scale(1.025);
+        }
+
+        .photo-placeholder {
+            display: none;
+            min-height: 155px;
+            height: 100%;
+            place-items: center;
+            padding: 18px;
+            text-align: center;
+            color: #8C70B1;
+            background: linear-gradient(145deg,#F6F0FC,#EDE3F8);
+        }
+
+        .photo-placeholder i {
+            display: block;
+            margin-bottom: 9px;
+            font-size: 35px;
+        }
+
+        .photo-placeholder strong {
+            display: block;
+            color: var(--ungu-gelap);
+            font-family: 'Poppins', sans-serif;
+            font-size: 11px;
+        }
+
+        .photo-placeholder span {
+            display: block;
+            margin-top: 5px;
+            color: var(--abu);
+            font-size: 9px;
+        }
+
+        .doctor-info {
+            min-width: 0;
+        }
+
+        .doctor-label {
+            display: inline-block;
+            padding: 6px 11px;
+            border-radius: 30px;
+            background: #F4EDFC;
+            color: #8A641C;
+            font-family: 'Poppins', sans-serif;
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+        }
+
+        .doctor-info h2 {
+            margin: 10px 0 6px;
+            color: var(--ungu-gelap);
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(18px, 2.4vw, 23px);
+            font-weight: 900;
+            line-height: 1.3;
+        }
+
+        .doctor-role {
+            margin-bottom: 15px;
+            color: var(--abu);
+            font-size: 10px;
+        }
+
+        .detail-heading {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 8px;
+            color: var(--ungu);
+            font-family: 'Poppins', sans-serif;
+            font-size: 11px;
+            font-weight: 800;
+        }
+
+        .detail-heading::before {
+            content: "";
+            width: 18px;
+            height: 2px;
+            background: var(--emas);
+        }
+
+        .expertise {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 18px;
+        }
+
+        .expertise span {
+            padding: 7px 11px;
+            border: 1px solid #E8DDF5;
+            border-bottom: 2px solid var(--emas);
+            border-radius: 8px;
+            background: #FBF9FE;
+            color: #51465F;
+            font-size: 10px;
+            font-weight: 700;
+        }
+
+        /* JADWAL PRAKTIK */
+        .schedule {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            padding: 13px;
+            border: 1px solid #EEE6F5;
+            border-radius: 12px;
+            background: #FAF8FD;
+        }
+
+        .schedule-item {
+            display: flex;
+            align-items: center;
+            min-width: 0;
+            gap: 10px;
+        }
+
+        .schedule-item i {
+            display: grid;
+            place-items: center;
+            width: 35px;
+            height: 35px;
+            flex: 0 0 35px;
+            border-radius: 10px;
+            background: #EEE5F8;
+            color: var(--ungu);
+        }
+
+        .schedule-item small {
+            display: block;
+            color: var(--abu);
+            font-size: 9px;
+        }
+
+        .schedule-item strong {
+            display: block;
+            color: var(--teks);
+            font-family: 'Poppins', sans-serif;
+            font-size: 10px;
+        }
+
+        /* TOMBOL WHATSAPP */
+        .doctor-contact {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 16px;
+            padding: 10px 17px;
+            border-radius: 10px;
+            color: white;
+            background: linear-gradient(135deg, #25D366, #128C4A);
+            box-shadow: 0 4px 0 #0B6735, 0 7px 14px rgba(18,140,74,.13);
+            font-family: 'Poppins', sans-serif;
+            font-size: 11px;
+            font-weight: 800;
+            transition: .2s;
+            cursor: pointer;
+        }
+
+        .doctor-contact:hover {
+            transform: translateY(-2px);
+        }
+
+        /* FOOTER */
+        footer {
+            padding: 25px 20px;
+            color: white;
+            background: #241238;
+            border-top: 4px solid var(--emas);
+            text-align: center;
+            font-size: 11px;
+            line-height: 1.8;
+        }
+
+        footer strong {
+            display: block;
+            margin-bottom: 4px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 13px;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 900px) {
+            main {
+                grid-template-columns: 1fr;
+            }
+
+            main > .list-heading,
+            main > .list-subheading {
+                grid-column: 1;
+            }
+
+            .doctor-profile {
+                grid-template-columns: 150px minmax(0, 1fr);
+                gap: 17px;
+                padding: 16px;
+                border-radius: 17px;
+            }
+
+            .doctor-photo {
+                width: 150px;
+                min-height: 190px;
+            }
+
+            .doctor-photo img {
+                height: 200px;
+            }
+
+            .photo-placeholder {
+                min-height: 180px;
+            }
+        }
+
+        @media (max-width: 560px) {
+            .topbar-inner {
+                padding: 10px 14px;
+            }
+
+            .logo-pemprov {
+                width: 38px;
+                height: 43px;
+            }
+
+            .logo-sivetra {
+                width: 110px;
+                max-height: 45px;
+            }
+
+            .divider {
+                height: 34px;
+            }
+
+            .back-link {
+                padding: 8px 10px;
+                font-size: 10px;
+            }
+
+            .intro {
+                padding: 43px 18px 38px;
+            }
+
+            .intro p {
+                font-size: 12px;
+            }
+
+            main {
+                padding: 34px 16px 55px;
+            }
+
+            .doctor-photo {
+                min-height: 190px;
+            }
+
+            .doctor-photo img {
+                height: 190px;
+            }
+
+            .schedule {
+                padding: 10px;
+            }
+
+            .doctor-profile {
+                grid-template-columns: 125px minmax(0, 1fr);
+            }
+
+            .doctor-photo {
+                width: 125px;
+                min-height: 155px;
+            }
+
+            .doctor-photo img {
+                height: 165px;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .doctor-profile {
+                grid-template-columns: 1fr;
+            }
+
+            .doctor-photo {
+                width: 100%;
+                max-width: 220px;
+                min-height: 220px;
+            }
+
+            .doctor-photo img {
+                height: 230px;
+            }
+
+            .photo-placeholder {
+                min-height: 210px;
+            }
+
+            .doctor-info h2 {
+                font-size: 21px;
+            }
+        }
+
+        /* PENYESUAIAN FOTO: MEMENUHI TINGGI BINGKAI PROFIL */
+        @media (min-width: 421px) {
+            .doctor-photo {
+                height: 100%;
+                align-self: stretch;
+            }
+
+            .doctor-photo img {
+                height: 100%;
+                min-height: 155px;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .doctor-photo {
+                height: 220px;
+            }
+
+            .doctor-photo img {
+                height: 230px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="topbar">
+        <div class="topbar-inner">
+            <div class="brand">
+                <img src="images/logo-pemprov.png"
+                     alt="Logo Pemerintah Provinsi NTT"
+                     class="logo-pemprov"
+                     onerror="this.hidden=true">
+
+                <span class="divider"></span>
+
+                <a href="index.html" aria-label="Kembali ke Beranda SiVETRA">
+                    <img src="images/logo-sivetra.png"
+                         alt="Logo SiVETRA"
+                         class="logo-sivetra">
+                </a>
+            </div>
+
+            <a href="index.html#layanan" class="back-link">
+                <i class="fa-solid fa-arrow-left"></i>
+                Kembali ke Beranda
+            </a>
+        </div>
+    </header>
+
+    <!-- INTRO -->
+    <section class="intro">
+        <span class="eyebrow">
+            RUMAH SAKIT HEWAN UPTD VETERINER PROVINSI NTT
+        </span>
+
+        <h1>Dokter Hewan Kami</h1>
+
+        <p>
+            Kenali dokter hewan yang memberikan pelayanan konsultasi
+            di Rumah Sakit Hewan UPTD Veteriner Provinsi Nusa Tenggara Timur.
+        </p>
+    </section>
+
+    <!-- DAFTAR DOKTER -->
+    <main>
+
+        <h2 class="list-heading">Profil Dokter Hewan</h2>
+
+        <p class="list-subheading">
+            Informasi kompetensi, jadwal praktik, dan kontak dokter.
+        </p>
+
+        <!-- DOKTER 1 -->
+        <article class="doctor-profile">
+
+            <div class="doctor-photo">
+                <img src="images/dokter-01.png"
+                     alt="Foto drh. Elfirst Th. Ch. Welkis, M.Sc"
+                     onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
+
+                <div class="photo-placeholder">
+                    <div>
+                        <i class="fa-solid fa-user-doctor"></i>
+                        <strong>Foto Dokter 1</strong>
+                        <span>Tambahkan dokter-01.png<br>ke folder images</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="doctor-info">
+                <span class="doctor-label">Koordinator Pelayanan Klinik</span>
+
+                <h2>drh. Elfirst T.C. Welkis, M.Sc</h2>
+
+                <p class="doctor-role">
+                    Dokter Hewan – Rumah Sakit Hewan UPTD Veteriner Provinsi NTT
+                </p>
+
+                <h3 class="detail-heading">Bidang Kompetensi</h3>
+
+                <div class="expertise">
+                    <span>Soft Tissue Surgery</span>
+                    <span>Exotic Animal Medicine</span>
+                </div>
+
+                <div class="schedule">
+                    <div class="schedule-item">
+                        <i class="fa-regular fa-calendar-days"></i>
+                        <div>
+                            <small>Hari Praktik</small>
+                            <strong>Senin–Jumat</strong>
+                        </div>
+                    </div>
+
+                    <div class="schedule-item">
+                        <i class="fa-regular fa-clock"></i>
+                        <div>
+                            <small>Jam Praktik</small>
+                            <strong>07.30–16.00 WITA</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="#" class="doctor-contact"
+                   data-doctor="drh. Elfirst T.C. Welkis, M.Sc"
+                   data-expertise="Soft Tissue Surgery, Exotic Animal Medicine">
+                    <i class="fa-brands fa-whatsapp"></i> Hubungi Dokter
+                </a>
+            </div>
+        </article>
+
+        <!-- DOKTER 2 -->
+        <article class="doctor-profile">
+
+            <div class="doctor-photo">
+                <img src="images/dokter-02.png"
+                     alt="Foto drh. Joice Y. Agustaf"
+                     onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
+
+                <div class="photo-placeholder">
+                    <div>
+                        <i class="fa-solid fa-user-doctor"></i>
+                        <strong>Foto Dokter 2</strong>
+                        <span>Tambahkan dokter-02.png<br>ke folder images</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="doctor-info">
+                <span class="doctor-label">Koordinator Administrasi</span>
+
+                <h2>drh. Joice Y. Agustaf</h2>
+
+                <p class="doctor-role">
+                    Dokter Hewan – Rumah Sakit Hewan UPTD Veteriner Provinsi NTT
+                </p>
+
+                <h3 class="detail-heading">Bidang Kompetensi</h3>
+
+                <div class="expertise">
+                    <span>Internal Medicine</span>
+                </div>
+
+                <div class="schedule">
+                    <div class="schedule-item">
+                        <i class="fa-regular fa-calendar-days"></i>
+                        <div>
+                            <small>Hari Praktik</small>
+                            <strong>Senin–Jumat</strong>
+                        </div>
+                    </div>
+
+                    <div class="schedule-item">
+                        <i class="fa-regular fa-clock"></i>
+                        <div>
+                            <small>Jam Praktik</small>
+                            <strong>07.30–16.00 WITA</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="#" class="doctor-contact"
+                   data-doctor="drh. Joice Y. Agustaf"
+                   data-expertise="Internal Medicine">
+                    <i class="fa-brands fa-whatsapp"></i> Hubungi Dokter
+                </a>
+            </div>
+        </article>
+
+        <!-- DOKTER 3 -->
+        <article class="doctor-profile">
+
+            <div class="doctor-photo">
+                <img src="images/dokter-03.png"
+                     alt="Foto drh. Filipe M. Dos Santos"
+                     onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
+
+                <div class="photo-placeholder">
+                    <div>
+                        <i class="fa-solid fa-user-doctor"></i>
+                        <strong>Foto Dokter 3</strong>
+                        <span>Tambahkan dokter-03.png<br>ke folder images</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="doctor-info">
+                <span class="doctor-label">Koordinator Petcare dan Farmasi</span>
+
+                <h2>drh. Filipe M.D. Santos</h2>
+
+                <p class="doctor-role">
+                    Dokter Hewan – Rumah Sakit Hewan UPTD Veteriner Provinsi NTT
+                </p>
+
+                <h3 class="detail-heading">Bidang Kompetensi</h3>
+
+                <div class="expertise">
+                    <span>Imaging Diagnostic</span>
+                    <span>Soft Tissue Surgery</span>
+                </div>
+
+                <div class="schedule">
+                    <div class="schedule-item">
+                        <i class="fa-regular fa-calendar-days"></i>
+                        <div>
+                            <small>Hari Praktik</small>
+                            <strong>Senin–Jumat</strong>
+                        </div>
+                    </div>
+
+                    <div class="schedule-item">
+                        <i class="fa-regular fa-clock"></i>
+                        <div>
+                            <small>Jam Praktik</small>
+                            <strong>07.30–16.00 WITA</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="#" class="doctor-contact"
+                   data-doctor="drh. Filipe M.D. Santos"
+                   data-expertise="Imaging Diagnostic, Soft Tissue Surgery">
+                    <i class="fa-brands fa-whatsapp"></i> Hubungi Dokter
+                </a>
+            </div>
+        </article>
+
+        <!-- DOKTER 4 -->
+        <article class="doctor-profile">
+
+            <div class="doctor-photo">
+                <img src="images/dokter-04.png"
+                     alt="Foto drh. Arnaldo N. Safu"
+                     onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
+
+                <div class="photo-placeholder">
+                    <div>
+                        <i class="fa-solid fa-user-doctor"></i>
+                        <strong>Foto Dokter 4</strong>
+                        <span>Tambahkan dokter-04.png<br>ke folder images</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="doctor-info">
+                <span class="doctor-label">Ketua Tim Bedah</span>
+
+                <h2>drh. Arnaldo N. Safu</h2>
+
+                <p class="doctor-role">
+                    Dokter Hewan – Rumah Sakit Hewan UPTD Veteriner Provinsi NTT
+                </p>
+
+                <h3 class="detail-heading">Bidang Kompetensi</h3>
+
+                <div class="expertise">
+                    <span>Soft Tissue Surgery</span>
+                    <span>Internal Medicine</span>
+                </div>
+
+                <div class="schedule">
+                    <div class="schedule-item">
+                        <i class="fa-regular fa-calendar-days"></i>
+                        <div>
+                            <small>Hari Praktik</small>
+                            <strong>Senin–Jumat</strong>
+                        </div>
+                    </div>
+
+                    <div class="schedule-item">
+                        <i class="fa-regular fa-clock"></i>
+                        <div>
+                            <small>Jam Praktik</small>
+                            <strong>07.30–16.00 WITA</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="#" class="doctor-contact"
+                   data-doctor="drh. Arnaldo N. Safu"
+                   data-expertise="Soft Tissue Surgery, Internal Medicine">
+                    <i class="fa-brands fa-whatsapp"></i> Hubungi Dokter
+                </a>
+            </div>
+        </article>
+
+        <!-- DOKTER 5 -->
+        <article class="doctor-profile">
+
+            <div class="doctor-photo">
+                <img src="images/dokter-05.png"
+                     alt="Foto drh. Jefrianus T. Amfotis"
+                     onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
+
+                <div class="photo-placeholder">
+                    <div>
+                        <i class="fa-solid fa-user-doctor"></i>
+                        <strong>Foto Dokter 5</strong>
+                        <span>Tambahkan dokter-05.png<br>ke folder images</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="doctor-info">
+                <span class="doctor-label">Ketua Tim Rawat Inap dan Titip Sehat</span>
+
+                <h2>drh. Jefrianus T. Amfotis</h2>
+
+                <p class="doctor-role">
+                    Dokter Hewan – Rumah Sakit Hewan UPTD Veteriner Provinsi NTT
+                </p>
+
+                <h3 class="detail-heading">Bidang Kompetensi</h3>
+
+                <div class="expertise">
+                    <span>Internal Medicine</span>
+                    <span>Reproduction and Theriogenology</span>
+                </div>
+
+                <div class="schedule">
+                    <div class="schedule-item">
+                        <i class="fa-regular fa-calendar-days"></i>
+                        <div>
+                            <small>Hari Praktik</small>
+                            <strong>Senin–Jumat</strong>
+                        </div>
+                    </div>
+
+                    <div class="schedule-item">
+                        <i class="fa-regular fa-clock"></i>
+                        <div>
+                            <small>Jam Praktik</small>
+                            <strong>07.30–16.00 WITA</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="#" class="doctor-contact"
+                   data-doctor="drh. Jefrianus T. Amfotis"
+                   data-expertise="Internal Medicine, Reproduction and Theriogenology">
+                    <i class="fa-brands fa-whatsapp"></i> Hubungi Dokter
+                </a>
+            </div>
+        </article>
+
+        <!-- DOKTER 6 -->
+        <article class="doctor-profile">
+
+            <div class="doctor-photo">
+                <img src="images/dokter-06.png"
+                     alt="Foto drh. Yakobus R. Ladju"
+                     onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
+
+                <div class="photo-placeholder">
+                    <div>
+                        <i class="fa-solid fa-user-doctor"></i>
+                        <strong>Foto Dokter 6</strong>
+                        <span>Tambahkan dokter-06.png<br>ke folder images</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="doctor-info">
+                <span class="doctor-label">Ketua Tim Grooming</span>
+
+                <h2>drh. Yakobus R. Ladju</h2>
+
+                <p class="doctor-role">
+                    Dokter Hewan – Rumah Sakit Hewan UPTD Veteriner Provinsi NTT
+                </p>
+
+                <h3 class="detail-heading">Bidang Kompetensi</h3>
+
+                <div class="expertise">
+                    <span>Dermatology</span>
+                    <span>Neurology</span>
+                </div>
+
+                <div class="schedule">
+                    <div class="schedule-item">
+                        <i class="fa-regular fa-calendar-days"></i>
+                        <div>
+                            <small>Hari Praktik</small>
+                            <strong>Senin–Jumat</strong>
+                        </div>
+                    </div>
+
+                    <div class="schedule-item">
+                        <i class="fa-regular fa-clock"></i>
+                        <div>
+                            <small>Jam Praktik</small>
+                            <strong>07.30–16.00 WITA</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="#" class="doctor-contact"
+                   data-doctor="drh. Yakobus R. Ladju"
+                   data-expertise="Dermatology, Neurology">
+                    <i class="fa-brands fa-whatsapp"></i> Hubungi Dokter
+                </a>
+            </div>
+        </article>
+
+        <!-- DOKTER 7 -->
+        <article class="doctor-profile">
+
+            <div class="doctor-photo">
+                <img src="images/dokter-07.png"
+                     alt="Foto drh. Piter G. Nitbani"
+                     onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
+
+                <div class="photo-placeholder">
+                    <div>
+                        <i class="fa-solid fa-user-doctor"></i>
+                        <strong>Foto Dokter 7</strong>
+                        <span>Tambahkan dokter-07.png<br>ke folder images</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="doctor-info">
+                <span class="doctor-label">Ketua Tim Housevisit/Ambulatori</span>
+
+                <h2>drh. Piter G. Nitbani</h2>
+
+                <p class="doctor-role">
+                    Dokter Hewan – Rumah Sakit Hewan UPTD Veteriner Provinsi NTT
+                </p>
+
+                <h3 class="detail-heading">Bidang Kompetensi</h3>
+
+                <div class="expertise">
+                    <span>Large Animal Medicine</span>
+                </div>
+
+                <div class="schedule">
+                    <div class="schedule-item">
+                        <i class="fa-regular fa-calendar-days"></i>
+                        <div>
+                            <small>Hari Praktik</small>
+                            <strong>Senin–Jumat</strong>
+                        </div>
+                    </div>
+
+                    <div class="schedule-item">
+                        <i class="fa-regular fa-clock"></i>
+                        <div>
+                            <small>Jam Praktik</small>
+                            <strong>07.30–16.00 WITA</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="#" class="doctor-contact"
+                   data-doctor="drh. Piter G. Nitbani"
+                   data-expertise="Large Animal Medicine">
+                    <i class="fa-brands fa-whatsapp"></i> Hubungi Dokter
+                </a>
+            </div>
+        </article>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <strong>SiVETRA</strong>
+        Hewan Sehat, Masyarakat Sejahtera, NTT Maju.<br>
+        Rumah Sakit Hewan UPTD Veteriner Provinsi NTT
+    </footer>
+
+    <!-- SCRIPT WHATSAPP -->
+    <script>
+        document.querySelectorAll('.doctor-contact').forEach(function(button) {
+
+            button.addEventListener('click', function(event) {
+
+                event.preventDefault();
+
+                // Satu nomor WhatsApp untuk seluruh dokter
+                const nomorWhatsApp = '6285137359464';
+
+                // Mengambil nama dan kompetensi dokter yang dipilih
+                const namaDokter = this.dataset.doctor;
+                const kompetensi = this.dataset.expertise;
+
+                // Template pesan otomatis
+                const pesan =
+`Halo, saya ingin berkonsultasi melalui SiVETRA.
+
+Saya ingin menghubungi:
+${namaDokter}
+
+Bidang Kompetensi:
+${kompetensi}
+
+Mohon informasi lebih lanjut mengenai konsultasi dan jadwal pelayanan.
+
+Terima kasih.`;
+
+                // Membuat tautan WhatsApp
+                const linkWhatsApp =
+                    'https://wa.me/' + nomorWhatsApp +
+                    '?text=' + encodeURIComponent(pesan);
+
+                // Membuka WhatsApp pada tab baru
+                window.open(linkWhatsApp, '_blank');
+
+            });
+
+        });
+    </script>
+
+</body>
+</html>

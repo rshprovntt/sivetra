@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin SiVETRA | Rekap Pendaftaran</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--purple:#54258b;--purple2:#7444aa;--gold:#e7b84b;--ink:#252033;--muted:#777386;--bg:#f5f3f9;--line:#e9e5ef}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);font-family:Inter,Arial,sans-serif;color:var(--ink)}
+header{background:#ffffff;color:#302044;padding:18px 5%;box-shadow:0 5px 22px rgba(48,32,68,.09);border-bottom:3px solid #e7b84b}
+.head{max-width:1400px;margin:auto;display:flex;justify-content:space-between;align-items:center;gap:15px}.brand{font-weight:800;font-size:21px}.brand small{display:block;font-weight:500;font-size:12px;opacity:.8;margin-top:5px}
+.admin-brand{display:flex;align-items:center;min-width:0}
+.admin-brand-logos{display:flex;align-items:center;gap:18px;flex-shrink:0}
+.admin-brand-logos img{display:block;object-fit:contain}
+.admin-logo-pemprov{width:54px;height:60px;filter:drop-shadow(0 2px 4px rgba(40,30,55,.12))}
+.admin-logo-sivetra{width:158px;height:68px;object-fit:contain;padding:4px;background:transparent;mix-blend-mode:normal;filter:contrast(1.06) saturate(1.08) drop-shadow(0 2px 4px rgba(40,30,55,.12))}
+.admin-brand-divider{height:46px;width:1px;background:#ded6e8}
+@media(max-width:760px){.admin-brand-logos{gap:12px}.admin-logo-pemprov{width:42px;height:48px}.admin-logo-sivetra{width:126px;height:54px;padding:3px}.admin-brand-divider{height:38px}}
+
+main{max-width:1400px;margin:28px auto;padding:0 22px}.panel{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px;box-shadow:0 8px 30px #35224d0b}
+.login-wrap{max-width:430px;margin:55px auto}.login-wrap h1{margin:0 0 8px;color:var(--purple)}.sub{color:var(--muted);font-size:13px;line-height:1.6}
+label{display:block;font-size:12px;font-weight:700;margin:15px 0 7px}input,select{font:inherit;border:1px solid #ddd7e7;border-radius:9px;padding:11px 12px;background:#fff;width:100%;min-height:42px;color:var(--ink)}
+button{border:0;border-radius:9px;background:var(--purple);color:#fff;padding:11px 16px;font:600 13px Inter;cursor:pointer}button:hover{background:var(--purple2)}button.secondary{background:#eee9f5;color:var(--purple)}button.gold{background:var(--gold);color:#38264f}
+.login-wrap button{width:100%;margin-top:20px}.hidden{display:none!important}.toolbar{display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap;margin-bottom:18px}.toolbar h1{font-size:23px;margin:0;color:var(--purple)}
+.filters{display:grid;grid-template-columns:repeat(4,minmax(145px,1fr));gap:12px;margin:15px 0 18px}.filters label{margin-top:0}
+.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:12px}table{border-collapse:collapse;width:100%;min-width:950px;font-size:12px}th{background:#f2edf8;color:#4d2b70;text-align:left;padding:13px 11px;white-space:nowrap}td{padding:11px;border-top:1px solid var(--line);vertical-align:middle}tbody tr:hover{background:#fcfaff}.status-select{min-width:120px;padding:8px;border-radius:8px;font-size:12px}.count{font-size:13px;color:var(--muted);margin:0 0 12px}.message{font-size:13px;margin-top:12px;color:#b42318}.message.ok{color:#167447}.empty{text-align:center;padding:30px;color:var(--muted)}
+.actions{display:flex;gap:9px;flex-wrap:wrap}
+.dashboard-bottom{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-top:14px}
+.dashboard-bottom .footer-note{margin-top:0}
+.dashboard-bottom .gold{margin-left:auto}
+.footer-note{font-size:11px;color:var(--muted);margin-top:14px}
+@media(max-width:560px){.dashboard-bottom{align-items:stretch;flex-direction:column}.dashboard-bottom .gold{width:100%}}
+@media(max-width:760px){main{padding:0 12px;margin:18px auto}.panel{padding:16px}.filters{grid-template-columns:1fr 1fr}.head{align-items:flex-start;flex-direction:column}.toolbar h1{font-size:20px}}
+@media(max-width:430px){.filters{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header><div class="head">
+<div class="admin-brand">
+  <div class="admin-brand-logos">
+    <img src="images/logo-pemprov.png" alt="Logo Pemerintah Provinsi Nusa Tenggara Timur" class="admin-logo-pemprov">
+    <span class="admin-brand-divider"></span>
+    <img src="images/logo-sivetra.png" alt="Logo SiVETRA" class="admin-logo-sivetra">
+  </div>
+</div>
+<div id="headerUser" class="hidden">Panel Administrator</div>
+</div></header>
+<main>
+<section id="loginPanel" class="panel login-wrap">
+  <h1>Login Administrator</h1>
+  <form id="loginForm">
+    <label for="username">Username</label><input id="username" autocomplete="username" required>
+    <label for="password">Password</label><input id="password" type="password" autocomplete="current-password" required>
+    <button type="submit">Masuk</button>
+    <div id="loginMessage" class="message" role="alert"></div>
+  </form>
+</section>
+
+<section id="dashboard" class="panel hidden">
+  <div class="toolbar">
+    <div><h1>Rekap Pendaftaran</h1></div>
+    <div class="actions">
+      <button class="secondary" id="refreshBtn">Muat Ulang</button>
+      <button class="secondary" id="logoutBtn">Keluar</button>
+    </div>
+  </div>
+  <div class="filters">
+    <div><label for="filterDate">Tanggal kunjungan</label><input type="date" id="filterDate"></div>
+    <div><label for="filterMonth">Bulan</label><select id="filterMonth"><option value="">Semua bulan</option><option value="01">Januari</option><option value="02">Februari</option><option value="03">Maret</option><option value="04">April</option><option value="05">Mei</option><option value="06">Juni</option><option value="07">Juli</option><option value="08">Agustus</option><option value="09">September</option><option value="10">Oktober</option><option value="11">November</option><option value="12">Desember</option></select></div>
+    <div><label for="filterYear">Tahun</label><select id="filterYear"><option value="">Semua tahun</option></select></div>
+    <div><label for="filterService">Jenis layanan</label><select id="filterService">
+      <option value="">Semua layanan</option>
+      <option value="Pengobatan">Pengobatan</option>
+      <option value="Vaksinasi">Vaksinasi</option>
+      <option value="Grooming">Grooming</option>
+      <option value="Rawat Inap dan Titip Sehat">Rawat Inap dan Titip Sehat</option>
+      <option value="Operasi">Operasi</option>
+    </select></div>
+  </div>
+  <p class="count" id="countText">Memuat data...</p>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Tanggal Kunjungan</th><th>Nomor Antrean</th><th>Nama Pemilik</th><th>Nama Hewan</th><th>Kategori Layanan</th><th>Jenis Layanan</th><th>Jenis Kunjungan</th><th>Status Pendaftaran</th></tr></thead>
+    <tbody id="tableBody"><tr><td colspan="8" class="empty">Memuat data...</td></tr></tbody>
+  </table></div>
+  <div id="dashboardMessage" class="message" role="status"></div>
+  <div class="dashboard-bottom">
+    <div class="footer-note">Perubahan status pada tabel akan langsung disimpan ke Google Sheets.</div>
+    <button class="gold" id="downloadBtn">Download Excel (.xlsx)</button>
+  </div>
+</section>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+<script>
+const API_URL = "https://script.google.com/macros/s/AKfycbx2-3r6gCRcvuRVR8tsPuVc0lS5ovoumgPjuoPKQp74txBzFQQI0AJvVNswvjiyuISi4g/exec";
+let adminToken = "";
+let allRows = [];
+let visibleRows = [];
+
+function jsonp(params) {
+  return new Promise((resolve, reject) => {
+    const callbackName = "sivetraCb_" + Date.now() + "_" + Math.floor(Math.random()*100000);
+    const script = document.createElement("script");
+    const timeout = setTimeout(() => { cleanup(); reject(new Error("Koneksi ke server terlalu lama.")); }, 20000);
+    function cleanup(){clearTimeout(timeout);delete window[callbackName];script.remove();}
+    window[callbackName] = data => {cleanup();resolve(data);};
+    params.callback = callbackName;
+    script.onerror = () => {cleanup();reject(new Error("Tidak dapat menghubungi server. Periksa URL/deployment Apps Script."));};
+    script.src = API_URL + "?" + new URLSearchParams(params).toString();
+    document.body.appendChild(script);
+  });
+}
+
+document.getElementById("loginForm").addEventListener("submit", async e => {
+  e.preventDefault();
+  const msg = document.getElementById("loginMessage");
+  msg.textContent = "Memeriksa akun...";
+  try {
+    const result = await jsonp({
+      action:"login",
+      username:document.getElementById("username").value.trim(),
+      password:document.getElementById("password").value
+    });
+    if (!result.success) throw new Error(result.message || "Login gagal.");
+    adminToken = result.token;
+    document.getElementById("loginPanel").classList.add("hidden");
+    document.getElementById("dashboard").classList.remove("hidden");
+    document.getElementById("headerUser").classList.remove("hidden");
+    await loadRows();
+  } catch(err) { msg.textContent = err.message; }
+});
+
+async function loadRows(){
+  const body = document.getElementById("tableBody");
+  body.innerHTML = '<tr><td colspan="8" class="empty">Memuat data...</td></tr>';
+  setMessage("");
+  try {
+    const result = await jsonp({action:"list",token:adminToken});
+    if (!result.success) throw new Error(result.message || "Gagal mengambil data.");
+    allRows = result.rows || [];
+    buildFilterOptions();
+    renderTable();
+  } catch(err) {
+    body.innerHTML = '<tr><td colspan="8" class="empty">Data tidak dapat dimuat.</td></tr>';
+    setMessage(err.message);
+    if (err.message.toLowerCase().includes("sesi admin")) logout();
+  }
+}
+function buildFilterOptions(){
+  const yearSelect = document.getElementById("filterYear");
+  const oldYear = yearSelect.value;
+  const years = [...new Set(allRows.map(r => (r.tanggalKunjungan||"").slice(0,4)).filter(x => /^\\d{4}$/.test(x)))].sort().reverse();
+  yearSelect.innerHTML = '<option value="">Semua tahun</option>' + years.map(y=>`<option value="${escapeHtml(y)}">${escapeHtml(y)}</option>`).join("");
+  if(years.includes(oldYear)) yearSelect.value=oldYear;
+}
+function getServiceCategory(row){
+  const raw = String(row.kategoriLayanan || row.jenisLayanan || "").trim().toLocaleLowerCase("id");
+  if(raw.includes("pengobatan")) return "Pengobatan";
+  if(raw.includes("vaksin")) return "Vaksinasi";
+  if(raw.includes("groom")) return "Grooming";
+  if(raw.includes("rawat inap") || raw.includes("titip sehat")) return "Rawat Inap dan Titip Sehat";
+  if(raw.includes("operasi") || raw.includes("bedah")) return "Operasi";
+  return "";
+}
+function renderTable(){
+  const date = document.getElementById("filterDate").value;
+  const month = document.getElementById("filterMonth").value;
+  const year = document.getElementById("filterYear").value;
+  const service = document.getElementById("filterService").value;
+  visibleRows = allRows.filter(r=>{
+    const d = String(r.tanggalKunjungan||"");
+    return (!date || d===date) && (!month || d.slice(5,7)===month) &&
+      (!year || d.slice(0,4)===year) && (!service || getServiceCategory(r)===service);
+  });
+  visibleRows.sort((a,b)=>(b.tanggalKunjungan||"").localeCompare(a.tanggalKunjungan||"") || (a.row-b.row));
+  document.getElementById("countText").textContent = `${visibleRows.length} pendaftaran ditampilkan dari ${allRows.length} data.`;
+  const body = document.getElementById("tableBody");
+  if(!visibleRows.length){body.innerHTML='<tr><td colspan="8" class="empty">Tidak ada data sesuai filter.</td></tr>';return;}
+  body.innerHTML = visibleRows.map(r=>`<tr>
+    <td>${escapeHtml(r.tanggalKunjungan)}</td><td><strong>${escapeHtml(r.nomorAntrean)}</strong></td>
+    <td>${escapeHtml(r.namaPemilik)}</td><td>${escapeHtml(r.namaHewan)}</td>
+    <td>${escapeHtml(r.kategoriLayanan)}</td><td>${escapeHtml(r.jenisLayanan)}</td>
+    <td>${escapeHtml(r.jenisKunjungan)}</td>
+    <td><select class="status-select" data-row="${Number(r.row)}" aria-label="Status ${escapeHtml(r.nomorAntrean)}">
+      <option value="Menunggu" ${r.status==="Menunggu"?"selected":""}>Menunggu</option>
+      <option value="Selesai" ${r.status==="Selesai"?"selected":""}>Selesai</option>
+    </select></td></tr>`).join("");
+  body.querySelectorAll(".status-select").forEach(sel=>sel.addEventListener("change",updateStatus));
+}
+async function updateStatus(event){
+  const select = event.target;
+  const row = select.dataset.row, status = select.value;
+  select.disabled = true; setMessage("Menyimpan perubahan status...",true);
+  try {
+    const result = await jsonp({action:"updateStatus",token:adminToken,row,status});
+    if(!result.success) throw new Error(result.message || "Status tidak dapat disimpan.");
+    const record = allRows.find(r=>String(r.row)===String(row));
+    if(record) record.status=status;
+    setMessage(`Status antrean berhasil diubah menjadi "${status}".`,true);
+  } catch(err) {
+    setMessage(err.message);
+    await loadRows();
+  } finally { select.disabled = false; }
+}
+function exportExcel(){
+  if(typeof XLSX==="undefined"){setMessage("Pustaka Excel belum termuat. Periksa koneksi internet.");return;}
+  const headers=["Tanggal Kunjungan","Nomor Antrean","Nama Pemilik","Nama Hewan","Kategori Layanan","Jenis Layanan","Jenis Kunjungan","Status Pendaftaran"];
+  const rows=visibleRows.map(r=>[r.tanggalKunjungan,r.nomorAntrean,r.namaPemilik,r.namaHewan,r.kategoriLayanan,r.jenisLayanan,r.jenisKunjungan,r.status]);
+  const ws=XLSX.utils.aoa_to_sheet([headers,...rows]);
+  ws["!cols"]=[{wch:18},{wch:16},{wch:25},{wch:22},{wch:20},{wch:24},{wch:25},{wch:20}];
+  ws["!autofilter"]={ref:XLSX.utils.encode_range({s:{r:0,c:0},e:{r:rows.length,c:headers.length-1}})};
+  const wb=XLSX.utils.book_new();
+  XLSX.utils.book_append_sheet(wb,ws,"Rekap Pendaftaran");
+  const now=new Date();
+  const stamp=[now.getFullYear(),String(now.getMonth()+1).padStart(2,"0"),String(now.getDate()).padStart(2,"0")].join("");
+  XLSX.writeFile(wb,`Rekap_Pendaftaran_SiVETRA_${stamp}.xlsx`);
+}
+function escapeHtml(value){
+  return String(value??"").replace(/[&<>"']/g,ch=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[ch]));
+}
+function setMessage(text,ok=false){const el=document.getElementById("dashboardMessage");el.textContent=text;el.className="message"+(ok?" ok":"");}
+function logout(){
+  adminToken="";allRows=[];visibleRows=[];
+  document.getElementById("dashboard").classList.add("hidden");
+  document.getElementById("headerUser").classList.add("hidden");
+  document.getElementById("loginPanel").classList.remove("hidden");
+  document.getElementById("password").value="";
+}
+["filterDate","filterMonth","filterYear","filterService"].forEach(id=>document.getElementById(id).addEventListener("change",renderTable));
+document.getElementById("refreshBtn").addEventListener("click",loadRows);
+document.getElementById("downloadBtn").addEventListener("click",exportExcel);
+document.getElementById("logoutBtn").addEventListener("click",logout);
+</script>
+</body>
+</html>

@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Layanan Pengobatan | SiVETRA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<style>
+:root{--purple:#6036A0;--deep:#43206B;--dark:#2D1748;--pale:#F3EDFC;--gold:#E8B94F;--muted:#756D80;--line:#E9E0F2}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Inter,sans-serif;color:#302641;line-height:1.55;background:#fbf9fe}
+a{text-decoration:none;color:inherit}
+header{position:sticky;top:0;z-index:10;background:#fff;border-bottom:3px solid var(--gold);box-shadow:0 4px 18px #2d17481a}
+.header-inner{max-width:1180px;margin:auto;padding:10px 22px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{display:flex;align-items:center;gap:12px}.logo-pemprov{width:46px;height:50px;object-fit:contain}.divider{height:40px;width:1px;background:#ded5ea}.logo-sivetra{width:130px;max-height:56px;object-fit:contain}
+.back{display:inline-flex;align-items:center;gap:8px;background:var(--purple);color:#fff;padding:10px 15px;border-radius:10px;font:700 12px Poppins,sans-serif}
+.hero{background:linear-gradient(120deg,#f2eafd,#fff 58%,#f8f1df);text-align:center;padding:38px 18px 34px}
+.kicker{display:inline-block;padding:6px 12px;border:1px solid #e4d7f2;border-radius:30px;background:#fff;color:var(--purple);font:800 9px Poppins,sans-serif;letter-spacing:1px}
+h1,h2,h3{font-family:Poppins,sans-serif}h1{color:var(--dark);font-size:clamp(26px,4vw,38px);line-height:1.2;margin-top:12px}
+.hero p{margin:8px auto 0;color:var(--muted);font-size:12px}
+main{max-width:1160px;margin:auto;padding:32px 22px 55px}
+.section-heading{text-align:center;margin-bottom:18px}.section-heading h2{font-size:21px;color:var(--dark)}
+.category-nav{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:25px}
+.nav-card{display:flex;align-items:center;gap:11px;padding:13px 15px;border:1px solid var(--line);border-radius:13px;background:#fff;box-shadow:0 4px 14px #2d17480b}
+.nav-icon{width:40px;height:40px;flex:0 0 40px;display:grid;place-items:center;border-radius:12px;background:var(--pale);color:var(--purple);font-size:17px}
+.nav-card strong{display:block;color:var(--dark);font:700 12px Poppins,sans-serif}
+.service-section{margin-top:25px;scroll-margin-top:90px}
+.section-banner{display:flex;align-items:center;gap:12px;padding:14px 18px;border-radius:13px 13px 0 0;background:linear-gradient(110deg,var(--deep),#7048a8);color:#fff}
+.big-icon{width:40px;height:40px;display:grid;place-items:center;border-radius:11px;background:#ffffff20;font-size:18px}
+.section-banner h2{font-size:16px}.section-banner p{font-size:10px;color:#eee5f8}
+.table-shell{border:1px solid var(--line);border-top:0;border-radius:0 0 13px 13px;overflow:hidden;background:#fff;box-shadow:0 10px 24px #3820520d}
+.table-scroll{overflow-x:auto}
+table{width:100%;border-collapse:collapse;min-width:680px}
+th{padding:13px 12px;text-align:center;background:#eee6f8;color:var(--deep);font:800 11px Poppins,sans-serif;border-bottom:1px solid #dfd1ed}
+th:nth-child(2){text-align:left}
+td{padding:12px;border-bottom:1px solid #f0ebf5;color:#62596d;font-size:12px;vertical-align:middle}
+tbody tr:nth-child(even){background:#fcfaff}tbody tr:hover{background:#f7f1ff}tbody tr:last-child td{border-bottom:0}
+.no{width:52px;text-align:center}.num{display:inline-grid;place-items:center;width:27px;height:27px;border-radius:8px;background:#f0e8fa;color:var(--purple);font:800 10px Poppins,sans-serif}
+.complaint{font-weight:700;color:#302044;font-size:12px}
+.price{text-align:center;white-space:nowrap;width:135px}
+.price strong{display:inline-block;min-width:100px;padding:8px 9px;border-radius:8px;background:#fff3cf;border:1px solid #efd58a;color:#684900;font:800 13px Poppins,sans-serif}.price-pick{display:inline-block;min-width:100px;padding:8px 9px;border-radius:8px;background:#fff3cf;border:1px solid #efd58a;color:#684900;font:800 13px Poppins,sans-serif;cursor:pointer;transition:.18s}.price-pick:hover,.price-pick:focus{background:#6036A0;color:#fff;border-color:#6036A0;transform:translateY(-1px)}
+.price .pending{background:#f3f1f5;border-color:#e5e0e9;color:#81798a;font-size:11px}
+.table-foot{padding:10px 14px;background:#faf8fd;border-top:1px solid #eee7f5;color:var(--muted);font-size:10px}
+.note{display:flex;gap:12px;margin-top:22px;padding:15px 17px;border:1px solid #f0e2b9;border-left:4px solid var(--gold);border-radius:12px;background:#fffbf0;color:#65552e;font-size:11px}
+.note-icon{width:34px;height:34px;flex:0 0 34px;display:grid;place-items:center;border-radius:10px;background:#fff0c7;color:#9a6b09}
+.note p{margin-top:4px}.note a{display:inline-block;margin-top:6px;color:var(--purple);font-weight:800;text-decoration:underline}
+.cta{margin:23px auto 0;padding:20px 22px;border-radius:14px;background:linear-gradient(120deg,#43206b,#6740a1);color:#fff;display:flex;align-items:center;justify-content:space-between;gap:15px}
+.cta h2{font-size:16px}.cta p{font-size:11px;color:#e8ddf8;margin-top:2px}
+.cta a{background:linear-gradient(135deg,#f6d983,#e8b94f);color:var(--dark);padding:10px 14px;border-radius:9px;font:800 11px Poppins,sans-serif;white-space:nowrap}
+footer{text-align:center;padding:20px 14px;background:#241238;color:#d0c2e0;font-size:10px}
+@media(max-width:760px){.category-nav{grid-template-columns:1fr}.hero{padding:32px 15px}main{padding:27px 14px 42px}.section-banner{padding:12px 14px}}
+@media(max-width:560px){.header-inner{padding:9px 12px;flex-wrap:wrap;justify-content:center}.logo-pemprov{width:36px;height:40px}.logo-sivetra{width:105px}.divider{height:32px}.back{padding:8px 11px;font-size:11px}.cta{align-items:flex-start;flex-direction:column;padding:18px}.price strong{font-size:12px}}
+
+/* Formulir pendaftaran SiVETRA */
+.booking-overlay{display:none;position:fixed;inset:0;z-index:1000;background:#21132dcc;padding:18px;overflow:auto;align-items:center;justify-content:center}
+.booking-overlay.show{display:flex}
+.booking-modal{width:min(100%,620px);background:#fff;border-radius:18px;box-shadow:0 20px 60px #160b2780;overflow:hidden}
+.booking-head{padding:18px 22px;background:linear-gradient(110deg,#43206b,#7048a8);color:#fff;display:flex;justify-content:space-between;gap:12px;align-items:center}
+.booking-head h2{font:700 18px Poppins,sans-serif}.booking-close{border:0;background:#ffffff22;color:#fff;width:34px;height:34px;border-radius:9px;font-size:20px;cursor:pointer}
+.booking-body{padding:20px 22px}.booking-summary{background:#f7f2fd;border:1px solid #e8def2;border-radius:12px;padding:12px 14px;margin-bottom:16px;font-size:12px;color:#493366}
+.booking-summary strong{color:#43206b}.booking-form{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.booking-field{display:flex;flex-direction:column;gap:5px}.booking-field.full{grid-column:1/-1}
+.booking-field label{font-size:11px;font-weight:700;color:#49365f}
+.booking-field input,.booking-field select,.booking-field textarea{width:100%;padding:10px 11px;border:1px solid #ddd2e9;border-radius:9px;font:12px Inter,sans-serif;color:#302641;background:#fff}
+.booking-field textarea{min-height:70px;resize:vertical}
+.booking-submit{grid-column:1/-1;border:0;border-radius:10px;padding:13px;background:linear-gradient(120deg,#6036A0,#43206B);color:#fff;font:800 12px Poppins,sans-serif;cursor:pointer}
+.booking-submit:disabled{opacity:.6;cursor:wait}
+.booking-help{font-size:10px;color:#81768d;margin-top:10px}
+.ticket-result{display:none;text-align:center;padding:24px 12px}.ticket-result.show{display:block}
+.ticket-number{font:800 28px Poppins,sans-serif;color:#43206b;background:#fff3cf;border:1px solid #efd58a;border-radius:12px;padding:15px;margin:12px auto;letter-spacing:1px}
+.ticket-result p{font-size:12px;color:#62596d}
+@media(max-width:560px){.booking-form{grid-template-columns:1fr}.booking-field.full,.booking-submit{grid-column:1}.booking-body{padding:16px}.booking-head{padding:15px 17px}}
+
+
+/* Kartu antrean siap cetak */
+.ticket-card{max-width:430px;margin:18px auto 12px;padding:20px;border:2px solid #6036A0;border-radius:14px;background:#fff;color:#302641;text-align:left;box-shadow:0 8px 22px #38205212}
+.ticket-card-head{display:flex;align-items:center;gap:12px;padding-bottom:12px;border-bottom:2px solid #e8def2}
+.ticket-card-logos{display:flex;align-items:center;gap:8px;flex:0 0 auto}
+.ticket-card-logos img{width:42px;height:46px;object-fit:contain}
+.ticket-card-logos img.logo-sivetra-print{width:82px;height:46px}
+.ticket-card-org{font:700 10px/1.4 Poppins,sans-serif;color:#43206B}
+.ticket-card-org small{display:block;font:500 8px/1.4 Inter,sans-serif;color:#756D80}
+.ticket-card-title{text-align:center;margin:14px 0 8px;font:800 13px Poppins,sans-serif;color:#43206B;letter-spacing:.8px}
+.ticket-card-date{text-align:center;font-size:10px;color:#756D80;margin-bottom:12px}
+.ticket-card-info{display:grid;grid-template-columns:105px 1fr;gap:7px 8px;font-size:11px}
+.ticket-card-info span{color:#756D80}.ticket-card-info strong{color:#302641;overflow-wrap:anywhere}
+.ticket-card-number-label{text-align:center;margin-top:15px;font:700 10px Poppins,sans-serif;color:#756D80}
+.ticket-card-number{text-align:center;margin-top:5px;padding:12px 8px;border:1px dashed #d5b65f;border-radius:10px;background:#fff3cf;color:#43206B;font:800 30px Poppins,sans-serif;letter-spacing:1.5px}
+.ticket-card-foot{text-align:center;margin-top:12px;padding-top:9px;border-top:1px solid #eee7f5;font-size:9px;color:#756D80}
+.ticket-print-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;margin-top:10px;padding:11px 18px;border:0;border-radius:9px;background:linear-gradient(120deg,#6036A0,#43206B);color:#fff;font:800 11px Poppins,sans-serif;cursor:pointer}
+@media print {
+  @page { size: 100mm 75mm; margin: 0; }
+  html, body {
+    width: 100mm !important; height: 75mm !important;
+    min-width: 100mm !important; min-height: 75mm !important;
+    margin: 0 !important; padding: 0 !important; overflow: hidden !important;
+    background: #fff !important;
+    -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important;
+  }
+  body * { visibility: hidden !important; }
+  #printTicket, #printTicket * { visibility: visible !important; }
+  #printTicket {
+    display: flex !important; position: fixed !important; left: 0 !important; top: 0 !important;
+    width: 100mm !important; height: 75mm !important; max-width: none !important;
+    box-sizing: border-box !important; margin: 0 !important; padding: 4mm !important;
+    border: 1mm solid #6036A0 !important; border-radius: 3mm !important;
+    background: #fff !important; box-shadow: none !important; overflow: hidden !important;
+    flex-direction: column !important; justify-content: flex-start !important; gap: 0 !important;
+    break-inside: avoid !important; page-break-inside: avoid !important;
+  }
+  #printTicket .ticket-card-head {
+    display: flex !important; align-items: center !important; gap: 2mm !important;
+    padding: 0 0 2.2mm !important; border-bottom: .4mm solid #e8def2 !important;
+    flex: 0 0 auto !important;
+  }
+  #printTicket .ticket-card-logos {
+    display: flex !important; align-items: center !important; gap: 1.5mm !important; flex: 0 0 auto !important;
+  }
+  #printTicket .ticket-card-logos img {
+    display: block !important; width: 9mm !important; height: 10mm !important; object-fit: contain !important;
+  }
+  #printTicket .ticket-card-logos img.logo-sivetra-print { width: 19mm !important; height: 10mm !important; }
+  #printTicket .ticket-card-org { min-width: 0 !important; font: 800 7pt/1.25 Poppins, Arial, sans-serif !important; color: #43206B !important; }
+  #printTicket .ticket-card-org small { display: block !important; font: 500 5.8pt/1.25 Inter, Arial, sans-serif !important; color: #756D80 !important; }
+  #printTicket .ticket-card-title {
+    display: block !important; margin: 3mm 0 1.5mm !important; text-align: center !important;
+    font: 800 10pt/1.2 Poppins, Arial, sans-serif !important; letter-spacing: .4mm !important; color: #43206B !important;
+  }
+  #printTicket .ticket-card-date {
+    display: block !important; margin: 0 0 2.5mm !important; text-align: center !important;
+    font: 500 7.5pt/1.2 Inter, Arial, sans-serif !important; color: #756D80 !important;
+  }
+  #printTicket .ticket-card-info {
+    display: grid !important; grid-template-columns: 27mm minmax(0, 1fr) !important;
+    gap: 1.8mm 2mm !important; font: 500 8pt/1.2 Inter, Arial, sans-serif !important;
+  }
+  #printTicket .ticket-card-info span { color: #756D80 !important; }
+  #printTicket .ticket-card-info strong { min-width: 0 !important; color: #302641 !important; overflow-wrap: anywhere !important; }
+  #printTicket .ticket-card-number-label {
+    display: block !important; margin: 3mm 0 1mm !important; text-align: center !important;
+    font: 700 7.5pt/1.2 Poppins, Arial, sans-serif !important; color: #756D80 !important;
+  }
+  #printTicket .ticket-card-number {
+    display: block !important; box-sizing: border-box !important; width: 100% !important;
+    margin: 0 !important; padding: 3mm 2mm !important; border: .3mm dashed #d5b65f !important;
+    border-radius: 2mm !important; background: #fff3cf !important; text-align: center !important;
+    color: #43206B !important; font: 800 23pt/1.15 Poppins, Arial, sans-serif !important; letter-spacing: .8mm !important;
+  }
+  #printTicket .ticket-card-foot {
+    display: block !important; margin: 2.5mm 0 0 !important; padding: 2mm 0 0 !important;
+    border-top: .25mm solid #eee7f5 !important; text-align: center !important;
+    font: 500 6.5pt/1.2 Inter, Arial, sans-serif !important; color: #756D80 !important;
+  }
+  .ticket-print-btn, .ticket-result > h3, .ticket-result > p, footer { display: none !important; }
+  #bookingOverlay { display: block !important; position: static !important; inset: auto !important; padding: 0 !important; margin: 0 !important; overflow: visible !important; background: transparent !important; }
+  #bookingOverlay .booking-modal, #bookingOverlay .booking-body { display: block !important; width: auto !important; max-width: none !important; margin: 0 !important; padding: 0 !important; border: 0 !important; border-radius: 0 !important; box-shadow: none !important; background: transparent !important; }
+  #ticketResult { display: block !important; margin: 0 !important; padding: 0 !important; }
+}
+
+</style>
+</head>
+<body>
+<header><div class="header-inner">
+  <div class="brand">
+    <img src="images/logo-pemprov.png" alt="Logo Pemerintah Provinsi NTT" class="logo-pemprov" onerror="this.hidden=true">
+    <div class="divider"></div>
+    <a href="index.html" aria-label="SiVETRA Beranda"><img src="images/logo-sivetra.png" alt="Logo SiVETRA" class="logo-sivetra"></a>
+  </div>
+  <a class="back" href="index.html"><i class="fa-solid fa-arrow-left"></i> Kembali ke Beranda</a>
+</div></header>
+
+<section class="hero">
+  <span class="kicker">RUMAH SAKIT HEWAN UPTD VETERINER PROVINSI NTT</span>
+  <h1>Layanan Pengobatan</h1>
+  <p>Pilih kelompok hewan untuk melihat jenis layanan dan tarif.</p>
+</section>
+
+<main>
+  <div class="section-heading"><h2>Pilih Kelompok Hewan</h2></div>
+  <nav class="category-nav" aria-label="Navigasi kelompok hewan">
+    <a class="nav-card" href="#kesayangan"><span class="nav-icon"><i class="fa-solid fa-paw"></i></span><strong>Hewan Kesayangan</strong></a>
+    <a class="nav-card" href="#ternak"><span class="nav-icon"><i class="fa-solid fa-cow"></i></span><strong>Hewan Ternak</strong></a>
+    <a class="nav-card" href="#unggas"><span class="nav-icon"><i class="fa-solid fa-dove"></i></span><strong>Unggas</strong></a>
+  </nav>
+
+  <section class="service-section" id="kesayangan">
+    <div class="section-banner"><span class="big-icon"><i class="fa-solid fa-paw"></i></span><div><h2>Pengobatan Hewan Kesayangan</h2><p>Tarif berdasarkan kelompok berat badan.</p></div></div>
+    <div class="table-shell"><div class="table-scroll">
+      <table>
+        <thead><tr><th class="no">No.</th><th>Keluhan / Layanan</th><th class="price">1–10 kg</th><th class="price">10–20 kg</th><th class="price">20–30 kg</th><th class="price">&gt;30 kg</th></tr></thead>
+        <tbody>
+          <tr><td class="no"><span class="num">01</span></td><td><span class="complaint">Lemas dan Kurang Aktif</span></td><td class="price"><strong>Rp 40.000</strong></td><td class="price"><strong>Rp 60.000</strong></td><td class="price"><strong>Rp 80.000</strong></td><td class="price"><strong>Rp 100.000</strong></td></tr>
+          <tr><td class="no"><span class="num">02</span></td><td><span class="complaint">Lemas Berat dan Tidak Mau Makan</span></td><td class="price"><strong>Rp 115.000</strong></td><td class="price"><strong>Rp 155.000</strong></td><td class="price"><strong>Rp 195.000</strong></td><td class="price"><strong>Rp 335.000</strong></td></tr>
+          <tr><td class="no"><span class="num">03</span></td><td><span class="complaint">Muntah dan Diare</span></td><td class="price"><strong>Rp 185.000</strong></td><td class="price"><strong>Rp 265.000</strong></td><td class="price"><strong>Rp 325.000</strong></td><td class="price"><strong>Rp.395.000</strong></td></tr>
+          <tr><td class="no"><span class="num">04</span></td><td><span class="complaint">Cacingan</span></td><td class="price"><strong>Rp 50.000</strong></td><td class="price"><strong>Rp 65.000</strong></td><td class="price"><strong>Rp 80.000</strong></td><td class="price"><strong>Rp 95.000</strong></td></tr>
+          <tr><td class="no"><span class="num">05</span></td><td><span class="complaint">Gangguan Kulit dan Rambut</span></td><td class="price"><strong>Rp. 120.000</strong></td><td class="price"><strong>Rp 160.000</strong></td><td class="price"><strong>Rp 200.000</strong></td><td class="price"><strong>Rp 240.000</strong></td></tr>
+          <tr><td class="no"><span class="num">06</span></td><td><span class="complaint">Gangguan Pernapasan</span></td><td class="price"><strong>Rp. 165.000</strong></td><td class="price"><strong>Rp. 255.000</strong></td><td class="price"><strong>Rp. 345.000</strong></td><td class="price"><strong>Rp. 435.000</strong></td></tr>
+          <tr><td class="no"><span class="num">07</span></td><td><span class="complaint">Pemeriksaan Kebuntingan</span></td><td class="price" colspan="4"><strong>Rp 130.000</strong></td></tr>
+        </tbody>
+      </table>
+    </div><div class="table-foot">Geser tabel ke samping pada layar kecil untuk melihat seluruh kolom tarif.</div></div>
+  </section>
+
+  <section class="service-section" id="ternak">
+    <div class="section-banner"><span class="big-icon"><i class="fa-solid fa-cow"></i></span><div><h2>Pengobatan Hewan Ternak</h2><p>Tarif pelayanan per ekor.</p></div></div>
+    <div class="table-shell"><div class="table-scroll">
+      <table><thead><tr><th class="no">No.</th><th>Keluhan / Layanan</th><th>Satuan</th><th class="price">Tarif</th></tr></thead><tbody>
+        <tr><td class="no"><span class="num">01</span></td><td><span class="complaint">Penurunan Aktivitas dan Kondisi Lemas</span></td><td>Per ekor</td><td class="price"><strong>Rp. 45.000</strong></td></tr>
+        <tr><td class="no"><span class="num">02</span></td><td><span class="complaint">Sangat Lemas dan Tidak Mau Makan</span></td><td>Per ekor</td><td class="price"><strong>Rp. 175.000</strong></td></tr>
+        <tr><td class="no"><span class="num">03</span></td><td><span class="complaint">Muntah dan Diare</span></td><td>Per ekor</td><td class="price"><strong>Rp. 250.000</strong></td></tr>
+        <tr><td class="no"><span class="num">04</span></td><td><span class="complaint">Cacingan</span></td><td>Per ekor</td><td class="price"><strong>Rp. 70.000</strong></td></tr>
+        <tr><td class="no"><span class="num">05</span></td><td><span class="complaint">Gangguan Saluran Pernapasan</span></td><td>Per ekor</td><td class="price"><strong>Rp. 195.000</strong></td></tr>
+        <tr><td class="no"><span class="num">06</span></td><td><span class="complaint">Gangguan Reproduksi</span></td><td>Per ekor</td><td class="price"><strong>Rp. 225.000</strong></td></tr>
+      </tbody></table>
+    </div></div>
+  </section>
+
+  <section class="service-section" id="unggas">
+    <div class="section-banner"><span class="big-icon"><i class="fa-solid fa-dove"></i></span><div><h2>Pengobatan Unggas</h2><p>Tarif pelayanan per ekor.</p></div></div>
+    <div class="table-shell"><div class="table-scroll">
+      <table><thead><tr><th class="no">No.</th><th>Keluhan / Layanan</th><th>Satuan</th><th class="price">Tarif</th></tr></thead><tbody>
+        <tr><td class="no"><span class="num">01</span></td><td><span class="complaint">Penurunan Aktivitas</span></td><td>Per ekor</td><td class="price"><strong>Rp. 25.000</strong></td></tr>
+        <tr><td class="no"><span class="num">02</span></td><td><span class="complaint">Lemas dan Tidak Mau Makan</span></td><td>Per ekor</td><td class="price"><strong>Rp. 85.000</strong></td></tr>
+        <tr><td class="no"><span class="num">03</span></td><td><span class="complaint">Gangguan Pencernaan</span></td><td>Per ekor</td><td class="price"><strong>Rp. 80.000</strong></td></tr>
+        <tr><td class="no"><span class="num">04</span></td><td><span class="complaint">Gangguan Parasit</span></td><td>Per ekor</td><td class="price"><strong>Rp. 50.000</strong></td></tr>
+        <tr><td class="no"><span class="num">05</span></td><td><span class="complaint">Gangguan Saluran Pernapasan</span></td><td>Per ekor</td><td class="price"><strong>Rp. 85.000</strong></td></tr>
+        <tr><td class="no"><span class="num">06</span></td><td><span class="complaint">Gangguan Gerak dan Saraf</span></td><td>Per ekor</td><td class="price"><strong>Rp. 85.000</strong></td></tr>
+      </tbody></table>
+    </div></div>
+  </section>
+
+  <div class="note">
+    <div class="note-icon"><i class="fa-solid fa-scale-balanced"></i></div>
+    <div><strong>Acuan tarif: Perda Provinsi NTT Nomor 1 Tahun 2026.</strong>
+      <p>Biaya obat pulang (jika diperlukan) dihitung terpisah. Tarif akhir mengikuti pemeriksaan dan tindakan dokter hewan.</p>
+      <a href="https://peraturan.bpk.go.id/Details/353222/perda-prov-nusa-tenggara-timur-no-1-tahun-2026-perubahan-atas-peraturan-daerah-p" target="_blank" rel="noopener noreferrer">Lihat Perda</a>
+    </div>
+  </div>
+
+  <div class="cta"><div><h2>Daftar Layanan Pengobatan</h2><p>Klik tarif pada tabel untuk mengisi formulir pendaftaran dan memperoleh nomor antrean.</p></div>
+    <a href="#kesayangan" onclick="document.querySelector('#kesayangan').scrollIntoView({behavior:'smooth'});return false;"><i class="fa-solid fa-ticket"></i> Pilih Tarif</a>
+  </div>
+</main>
+
+<div class="booking-overlay" id="bookingOverlay" role="dialog" aria-modal="true" aria-labelledby="bookingTitle">
+ <div class="booking-modal">
+  <div class="booking-head"><h2 id="bookingTitle"><i class="fa-solid fa-clipboard-list"></i> Pendaftaran Pengobatan</h2><button class="booking-close" type="button" id="bookingClose" aria-label="Tutup">&times;</button></div>
+  <div class="booking-body">
+   <div class="booking-summary" id="bookingSummary"></div>
+   <form class="booking-form" id="bookingForm">
+    <div class="booking-field"><label for="ownerName">Nama pemilik *</label><input id="ownerName" name="ownerName" required maxlength="100"></div>
+    <div class="booking-field"><label for="ownerPhone">Nomor WhatsApp *</label><input id="ownerPhone" name="ownerPhone" type="tel" required maxlength="20" placeholder="08xxxxxxxxxx"></div>
+    <div class="booking-field"><label for="animalName">Nama hewan *</label><input id="animalName" name="animalName" required maxlength="80"></div>
+    <div class="booking-field"><label for="animalType">Jenis hewan *</label><select id="animalType" name="animalType" required><option value="">Pilih</option><option>Anjing</option><option>Kucing</option><option>Sapi</option><option>Kerbau</option><option>Kuda</option><option>Kambing</option><option>Domba</option><option>Babi</option><option>Unggas</option><option>Lainnya</option></select></div>
+    <div class="booking-field"><label for="visitType">Jenis kunjungan *</label><select id="visitType" name="visitType" required><option value="">Pilih jenis kunjungan</option><option value="Klinik">Klinik</option><option value="Ambulatori / House Visit">Ambulatori / House Visit</option></select></div>
+    <div class="booking-field"><label for="animalAge">Umur hewan</label><input id="animalAge" name="animalAge" placeholder="Contoh: 2 tahun"></div>
+    <div class="booking-field"><label for="animalWeight">Berat badan (kg)</label><input id="animalWeight" name="animalWeight" type="number" min="0" step="0.1"></div>
+    <div class="booking-field"><label for="visitDate">Tanggal kunjungan *</label><input id="visitDate" name="visitDate" type="date" required></div>
+    <div class="booking-field full"><label for="extraNotes">Keluhan / catatan tambahan</label><textarea id="extraNotes" name="extraNotes" maxlength="1000" placeholder="Jelaskan keluhan hewan secara singkat"></textarea></div>
+    <button class="booking-submit" id="bookingSubmit" type="submit"><i class="fa-solid fa-paper-plane"></i> Kirim Pendaftaran</button>
+   </form>
+   <div class="booking-help" id="bookingHelp">Pendaftaran merupakan permintaan kunjungan. Pemeriksaan dan tindakan ditentukan dokter hewan setelah pasien datang.</div>
+   <div class="ticket-result" id="ticketResult">
+<h3>Pendaftaran diterima</h3><div class="ticket-number" id="ticketNumber"></div><p id="ticketDetails"></p>
+<div class="ticket-card" id="printTicket">
+ <div class="ticket-card-head"><div class="ticket-card-logos">
+  <img src="images/logo-pemprov.png" alt="Logo Pemprov NTT">
+  <img class="logo-sivetra-print" src="images/logo-sivetra.png" alt="Logo SiVETRA">
+ </div><div class="ticket-card-org">PEMERINTAH PROVINSI NUSA TENGGARA TIMUR<small>RUMAH SAKIT HEWAN UPTD VETERINER</small></div></div>
+ <div class="ticket-card-title">KARTU NOMOR ANTREAN</div>
+ <div class="ticket-card-date" id="printTicketDate">Tanggal Kunjungan: -</div>
+ <div class="ticket-card-info"><span>Nama Pemilik</span><strong id="printOwnerName">-</strong><span>Nama Hewan</span><strong id="printAnimalName">-</strong></div>
+ <div class="ticket-card-number-label">NOMOR ANTREAN</div><div class="ticket-card-number" id="printTicketNumber">-</div>
+ <div class="ticket-card-foot">Harap simpan kartu ini dan tunjukkan kepada petugas saat berkunjung.</div>
+</div>
+<button type="button" class="ticket-print-btn" onclick="printQueueTicket()"><i class="fa-solid fa-print"></i> Cetak Kartu Antrean</button>
+<p>Simpan nomor antrean ini dan tunjukkan kepada petugas saat datang.</p>
+</div>
+  </div>
+ </div>
+</div>
+
+<footer>&copy; <span id="tahun"></span> SiVETRA | Rumah Sakit Hewan UPTD Veteriner Provinsi NTT</footer>
+
+<script>
+document.getElementById("tahun").textContent=new Date().getFullYear();
+
+/*
+ * Sambungan Google Sheets melalui Google Apps Script Web App.
+ * Endpoint ini menerima JSON dan mengembalikan nomor antrean.
+ */
+const FLOW_URL = "https://script.google.com/macros/s/AKfycbx2-3r6gCRcvuRVR8tsPuVc0lS5ovoumgPjuoPKQp74txBzFQQI0AJvVNswvjiyuISi4g/exec";
+let selectedBooking = null;
+
+function getGroupLabel(table, cellIndex){
+  const headers = [...table.querySelectorAll("thead th")];
+  const header = headers[cellIndex];
+  return header ? header.innerText.replace(/\s+/g," ").trim() : "Tarif";
+}
+function openBooking(button){
+  selectedBooking = {
+    service: button.dataset.service,
+    group: button.dataset.group,
+    price: button.dataset.price,
+    category: button.dataset.category
+  };
+  document.getElementById("bookingSummary").innerHTML =
+    "<strong>Layanan:</strong> "+escapeHtml(selectedBooking.service)+
+    "<br><strong>Kelompok:</strong> "+escapeHtml(selectedBooking.group)+
+    "<br><strong>Tarif:</strong> "+escapeHtml(selectedBooking.price);
+  document.getElementById("bookingForm").style.display="grid";
+  document.getElementById("ticketResult").classList.remove("show");
+  document.getElementById("bookingOverlay").classList.add("show");
+  document.body.style.overflow="hidden";
+}
+function closeBooking(){
+  document.getElementById("bookingOverlay").classList.remove("show");
+  document.body.style.overflow="";
+}
+function escapeHtml(value){
+  return String(value).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+}
+document.querySelectorAll("table").forEach(table=>{
+  const section = table.closest(".service-section");
+  const category = section ? section.querySelector(".section-banner h2").innerText.trim() : "Pengobatan";
+  table.querySelectorAll("tbody tr").forEach(row=>{
+    const serviceCell = row.querySelector(".complaint");
+    if(!serviceCell) return;
+    const service = serviceCell.innerText.trim();
+    row.querySelectorAll("td.price strong").forEach(cell=>{
+      const td = cell.closest("td");
+      const button = document.createElement("button");
+      button.type="button";
+      button.className=cell.className+" price-pick";
+      button.innerHTML=cell.innerHTML;
+      button.setAttribute("aria-label","Daftar "+service+" "+cell.innerText);
+      const cellIndex = [...row.children].indexOf(td);
+      let group;
+      if(td.hasAttribute("colspan")) group="Semua kelompok berat badan";
+      else if(table.querySelector("thead th:nth-child(3)")?.innerText.match(/kg/i)){
+        group=getGroupLabel(table,cellIndex);
+      } else {
+        group="Per ekor";
+      }
+      button.dataset.service=service;
+      button.dataset.group=group;
+      button.dataset.price=cell.innerText.trim();
+      button.dataset.category=category;
+      button.addEventListener("click",()=>openBooking(button));
+      td.replaceChild(button,cell);
+    });
+  });
+});
+
+document.getElementById("bookingClose").addEventListener("click",closeBooking);
+document.getElementById("bookingOverlay").addEventListener("click",e=>{
+  if(e.target.id==="bookingOverlay") closeBooking();
+});
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closeBooking();});
+
+const visitDate=document.getElementById("visitDate");
+const today=new Date();
+visitDate.min=[today.getFullYear(),String(today.getMonth()+1).padStart(2,"0"),String(today.getDate()).padStart(2,"0")].join("-");
+
+function printQueueTicket(){ window.print(); }
+
+document.getElementById("bookingForm").addEventListener("submit",async e=>{
+  e.preventDefault();
+  if(!selectedBooking) return;
+  const submit=document.getElementById("bookingSubmit");
+  submit.disabled=true;
+  submit.innerHTML='<i class="fa-solid fa-spinner fa-spin"></i> Mengirim...';
+  const formData=Object.fromEntries(new FormData(e.target).entries());
+  const payload={
+    namaPemilik:formData.ownerName,
+    noWhatsApp:formData.ownerPhone,
+    namaHewan:formData.animalName,
+    jenisHewan:formData.animalType,
+    jenisKunjungan:formData.visitType,
+    umurHewan:formData.animalAge,
+    beratKg:formData.animalWeight,
+    tanggalKunjungan:formData.visitDate,
+    keluhanCatatan:formData.extraNotes,
+    kategoriLayanan:selectedBooking.category,
+    jenisLayanan:selectedBooking.service,
+    kelompokTarif:selectedBooking.group,
+    tarif:selectedBooking.price,
+    sumberPendaftaran:"Website SiVETRA"
+  };
+  try{
+    const response=await fetch(FLOW_URL,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(payload)});
+    if(!response.ok) throw new Error("Pengiriman gagal ("+response.status+").");
+    const result=await response.json();
+    if(!result.success||!result.ticketNumber) throw new Error(result.message || "Server belum mengembalikan nomor antrean.");
+    document.getElementById("bookingForm").style.display="none";
+    document.getElementById("bookingHelp").style.display="none";
+    document.getElementById("ticketNumber").textContent=result.ticketNumber;
+    document.getElementById("ticketDetails").textContent=selectedBooking.service+" — "+selectedBooking.price;
+    const visitDateParts = formData.visitDate.split("-").map(Number);
+    const selectedVisitDate = new Date(visitDateParts[0], visitDateParts[1] - 1, visitDateParts[2]);
+    document.getElementById("printTicketDate").textContent = "Tanggal Kunjungan: " + selectedVisitDate.toLocaleDateString("id-ID", {day:"2-digit", month:"long", year:"numeric"});
+    document.getElementById("printOwnerName").textContent = formData.ownerName;
+    document.getElementById("printAnimalName").textContent = formData.animalName;
+    document.getElementById("printTicketNumber").textContent = result.ticketNumber;
+    document.getElementById("ticketResult").classList.add("show");
+  }catch(err){
+    alert("Pendaftaran belum berhasil dikirim. Silakan coba kembali atau hubungi petugas. "+err.message);
+  }finally{
+    submit.disabled=false;
+    submit.innerHTML='<i class="fa-solid fa-paper-plane"></i> Kirim Pendaftaran';
+  }
+});
+</script>
+
+</body>
+</html>

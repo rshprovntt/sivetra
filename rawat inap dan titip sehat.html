@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rawat Inap & Titip Sehat | SiVETRA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<style>
+:root{--purple:#6036A0;--deep:#43206B;--dark:#2D1748;--gold:#E8B94F;--muted:#756D80;--line:#e8def2}
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:Inter,sans-serif;color:#302641;line-height:1.7;background:#fff}a{text-decoration:none;color:inherit}h1,h2,h3{font-family:Poppins,sans-serif}
+header{position:sticky;top:0;z-index:5;background:#fff;border-bottom:3px solid var(--gold);box-shadow:0 4px 18px #2d17481a}.header-inner{max-width:1150px;margin:auto;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;gap:18px}.brand{display:flex;align-items:center;gap:12px}.logo-pemprov{width:48px;height:54px;object-fit:contain}.divider{height:42px;width:1px;background:#ded5ea}.logo-sivetra{width:135px;max-height:58px;object-fit:contain}.back{display:inline-flex;align-items:center;gap:8px;background:var(--purple);color:#fff;padding:10px 15px;border-radius:10px;font:700 12px Poppins;box-shadow:0 4px 0 var(--deep)}
+.hero{background:linear-gradient(125deg,#f8f4ff,#fff 55%,#f1e8fc);text-align:center;padding:52px 20px 44px}.kicker{color:var(--purple);font:800 11px Poppins;letter-spacing:2px}h1{color:var(--dark);font-size:clamp(27px,4vw,40px);line-height:1.3;margin-top:9px}.hero p{max-width:700px;margin:12px auto 0;color:var(--muted);font-size:13px}main{max-width:1100px;margin:auto;padding:42px 24px 65px}
+.section-title{text-align:center;margin-bottom:25px}.section-title h2{font-size:22px;color:var(--dark)}.section-title p{font-size:12px;color:var(--muted);margin-top:5px}.table-kicker{display:inline-flex;gap:7px;color:var(--purple);background:#f1e9fb;border:1px solid #e4d5f4;border-radius:30px;padding:6px 13px;font:800 10px Poppins;letter-spacing:1.2px;margin-bottom:12px}
+.service-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin-bottom:34px}.service-card{border:1px solid var(--line);border-radius:18px;padding:17px;background:linear-gradient(145deg,#fff,#faf7ff);box-shadow:0 9px 25px #38205210}.room-photo{width:100%;height:185px;display:block;object-fit:cover;border-radius:13px;margin-bottom:17px;background:#eee5f8;border:1px solid #e5d9f1}.service-icon{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;background:#eee5f8;color:var(--purple);font-size:21px;margin-bottom:13px}.service-card h3{font-size:18px;color:var(--dark)}.service-card p{font-size:11px;color:var(--muted);margin-top:4px}.tag{display:inline-block;margin-top:12px;padding:5px 10px;border-radius:30px;background:#f7edcf;color:#826018;font:800 9px Poppins;letter-spacing:.6px}
+.price-shell{margin-top:25px;border:1px solid #e7def1;border-radius:20px;overflow:hidden;background:#fff;box-shadow:0 14px 34px #38205212}
+.price-head{padding:20px 23px;background:linear-gradient(115deg,#382052,#6840a2);color:white;position:relative;overflow:hidden}
+.price-head:after{content:"";position:absolute;width:150px;height:150px;border:1px solid #ffffff26;border-radius:50%;right:-35px;top:-85px;box-shadow:0 0 0 20px #ffffff0b,0 0 0 40px #ffffff08}
+.price-head h2{font-size:19px;position:relative;z-index:1}.price-head p{font-size:11px;color:#e9def7;margin-top:4px;position:relative;z-index:1}
+.table-scroll{overflow-x:auto;padding:7px 12px 12px}.price-table{width:100%;border-collapse:separate;border-spacing:0;min-width:650px}
+.price-table th{background:#f2ebfb;color:#43206b;text-align:center;font:800 10px Poppins;padding:15px 12px;border-bottom:1px solid #e8def2}
+.price-table th:first-child{border-radius:10px 0 0 0}.price-table th:last-child{border-radius:0 10px 0 0}
+.price-table th:first-child,.price-table td:first-child{text-align:left}
+.price-table td{padding:15px 12px;border-bottom:1px solid #f0ebf5;font-size:12px;color:#62596d;text-align:center;background:#fff}
+.price-table tbody tr:nth-child(even) td{background:#fcfaff}
+.price-table tbody tr:hover td{background:#f8f3ff}
+.price-table tr:last-child td{border-bottom:0}
+.price-table td:first-child{font-weight:800;color:#43206b}
+.price-table td[rowspan]{vertical-align:middle;background:#f7f2fc!important;border-right:1px solid #eee5f5}
+.price{font:800 15px Poppins;color:#4b2878;white-space:nowrap;background:#fff1c6!important}.price-table td.duration{ text-align:center!important; font-weight:700; color:#62596d; white-space:nowrap; }
+.price:not(:empty){display:table-cell}
+.price-shell .price-table td.price{color:#6036A0}
+.price-shell .price-table td.price::first-letter{color:#6036A0}
+.price-hint{display:flex;align-items:flex-start;gap:10px;margin:0 18px 17px;padding:12px 14px;border-radius:12px;background:#f8f5fc;color:#71677e;font-size:10px}
+.price-hint i{color:#8b69b7;margin-top:2px}
+@media(max-width:560px){.price-head{padding:17px 17px}.price-head h2{font-size:17px}.table-scroll{padding:5px 8px 9px}.price-table th,.price-table td{padding:12px 9px}}
+.subsection{margin-top:42px}.price-shell+.price-shell{margin-top:20px}.requirements{display:flex;gap:15px;align-items:flex-start;margin-top:28px;padding:20px 22px;border:1px solid #e5d9f1;border-left:4px solid var(--purple);border-radius:15px;background:linear-gradient(110deg,#f8f4ff,#fff);box-shadow:0 8px 22px #3820520b}.requirements-icon{flex:0 0 40px;width:40px;height:40px;display:grid;place-items:center;border-radius:12px;background:#eee5f8;color:var(--purple);font-size:18px}.requirements h2{font-size:17px;color:var(--dark);margin:1px 0 7px}.requirements ul{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px 22px;padding-left:18px;color:var(--muted);font-size:11px}.note{display:flex;gap:13px;margin-top:22px;padding:16px 18px;border:1px solid #f0e2b9;border-left:4px solid var(--gold);border-radius:13px;background:linear-gradient(110deg,#fffbf0,#fffefa);color:#65552e;font-size:11px}.note-icon{flex:0 0 36px;width:36px;height:36px;display:grid;place-items:center;border-radius:11px;background:#fff0c7;color:#9a6b09;font-size:16px}.cta{margin:30px auto 0;padding:25px 27px;border-radius:17px;background:linear-gradient(120deg,#43206b,#6740a1);color:white;display:flex;align-items:center;justify-content:space-between;gap:18px;box-shadow:0 6px 0 #32164f}.cta h2{font-size:18px}.cta p{font-size:11px;color:#e8ddf8;margin-top:3px}.cta a{background:linear-gradient(135deg,#f6d983,#e8b94f);color:var(--dark);padding:10px 15px;border-radius:9px;font:800 11px Poppins;white-space:nowrap}footer{text-align:center;padding:23px 15px;background:#241238;color:#d0c2e0;font-size:10px}.reveal{opacity:0;transform:translateY(16px);transition:opacity .65s,transform .65s}.reveal.visible{opacity:1;transform:translateY(0)}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}@media(max-width:700px){.service-grid{grid-template-columns:1fr}.requirements ul{grid-template-columns:1fr 1fr}}@media(max-width:560px){.header-inner{padding:9px 12px;flex-wrap:wrap;justify-content:center}.logo-pemprov{width:38px;height:43px}.logo-sivetra{width:110px}.divider{height:34px}.hero{padding:39px 17px}.hero p{font-size:12px}main{padding:34px 15px 48px}.requirements ul{grid-template-columns:1fr}.cta{align-items:flex-start;flex-direction:column;padding:22px 18px}}
+
+/* Formulir pendaftaran SiVETRA - mengikuti halaman Pengobatan */
+.booking-overlay{display:none;position:fixed;inset:0;z-index:1000;background:#21132dcc;padding:18px;overflow:auto;align-items:center;justify-content:center}
+.booking-overlay.show{display:flex}
+.booking-modal{width:min(100%,620px);background:#fff;border-radius:18px;box-shadow:0 20px 60px #160b2780;overflow:hidden}
+.booking-head{padding:18px 22px;background:linear-gradient(110deg,#43206b,#7048a8);color:#fff;display:flex;justify-content:space-between;gap:12px;align-items:center}
+.booking-head h2{font:700 18px Poppins,sans-serif}.booking-close{border:0;background:#ffffff22;color:#fff;width:34px;height:34px;border-radius:9px;font-size:20px;cursor:pointer}
+.booking-body{padding:20px 22px}.booking-summary{background:#f7f2fd;border:1px solid #e8def2;border-radius:12px;padding:12px 14px;margin-bottom:16px;font-size:12px;color:#493366}
+.booking-summary strong{color:#43206b}.booking-form{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.booking-field{display:flex;flex-direction:column;gap:5px}.booking-field.full{grid-column:1/-1}
+.booking-field label{font-size:11px;font-weight:700;color:#49365f}
+.booking-field input,.booking-field select,.booking-field textarea{width:100%;padding:10px 11px;border:1px solid #ddd2e9;border-radius:9px;font:12px Inter,sans-serif;color:#302641;background:#fff}
+.booking-field textarea{min-height:70px;resize:vertical}
+.booking-submit{grid-column:1/-1;border:0;border-radius:10px;padding:13px;background:linear-gradient(120deg,#6036A0,#43206B);color:#fff;font:800 12px Poppins,sans-serif;cursor:pointer}
+.booking-submit:disabled{opacity:.6;cursor:wait}.booking-help{font-size:10px;color:#81768d;margin-top:10px}
+.ticket-result{display:none;text-align:center;padding:24px 12px}.ticket-result.show{display:block}.ticket-number{font:800 28px Poppins,sans-serif;color:#43206b;background:#fff3cf;border:1px solid #efd58a;border-radius:12px;padding:15px;margin:12px auto;letter-spacing:1px}
+.ticket-result p{font-size:12px;color:#62596d}.ticket-print-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;margin-top:12px;padding:11px 18px;border:0;border-radius:9px;background:linear-gradient(120deg,#6036A0,#43206B);color:#fff;font:800 11px Poppins,sans-serif;cursor:pointer}
+
+.ticket-card{display:none;width:100%;max-width:470px;margin:18px auto;padding:20px 24px;border:3px solid var(--purple);border-radius:9px;background:#fff;color:#302641;font-family:Inter,sans-serif;box-sizing:border-box;overflow:hidden}
+.ticket-card-head{display:grid;grid-template-columns:145px minmax(0,1fr);align-items:center;gap:12px;padding-bottom:10px;border-bottom:1px solid #e8def2}
+.ticket-card-logos{display:flex;align-items:center;gap:7px;min-width:0}
+.ticket-card-logos img:first-child{display:block;width:42px;height:44px;object-fit:contain}
+.ticket-card-logos img.logo-sivetra-print{display:block;width:92px;height:44px;object-fit:contain}
+.ticket-card-org{min-width:0;text-align:left;color:#43206B;font:800 10px/1.3 Arial,sans-serif;overflow-wrap:normal}
+.ticket-card-org strong{display:block}
+.ticket-card-org small{display:block;margin-top:3px;color:#62576f;font:600 9px/1.3 Arial,sans-serif}
+.ticket-card-title{text-align:center;margin:12px 0 5px;font:800 15px/1.2 Arial,sans-serif;color:#43206B;letter-spacing:.4px}
+.ticket-card-date{text-align:center;font:600 10px/1.3 Arial,sans-serif;color:#51465f;margin:0 0 10px}
+.ticket-card-info{display:grid;grid-template-columns:minmax(0,1fr);gap:6px;width:100%;max-width:390px;margin:0 auto;padding:0}
+.ticket-info-row{display:grid;grid-template-columns:105px minmax(0,1fr);gap:8px;align-items:start;font:500 11px/1.3 Arial,sans-serif}
+.ticket-info-row span{color:#756D80}
+.ticket-info-row strong{display:block;min-width:0;color:#302641;overflow-wrap:anywhere}
+.ticket-card-number-label{text-align:center;margin:10px 0 4px;font:700 10px/1.2 Arial,sans-serif;color:#756D80}
+.ticket-card-number{text-align:center;margin:0;padding:5px;border:1px dashed #d5b65f;border-radius:6px;background:#fff3cf;color:#43206B;font:800 28px/1.1 Arial,sans-serif;letter-spacing:1px}
+.ticket-card-foot{text-align:center;margin-top:8px;padding-top:6px;border-top:1px solid #eee7f5;font:500 8px/1.2 Arial,sans-serif;color:#756D80}
+@media(max-width:520px){
+  .ticket-card{width:calc(100% - 20px);padding:12px}
+  .ticket-card-head{grid-template-columns:125px minmax(0,1fr);gap:8px}
+  .ticket-card-logos img:first-child{width:34px;height:38px}
+  .ticket-card-logos img.logo-sivetra-print{width:82px;height:38px}
+  .ticket-card-org{font-size:8px}
+  .ticket-card-org small{font-size:7px}
+}
+
+.price-pick{display:inline-block;border:1px solid #efd58a;border-radius:8px;padding:8px 10px;background:#fff3cf;color:#684900;font:800 13px Poppins,sans-serif;white-space:nowrap;cursor:pointer;transition:.18s}
+.price-pick:hover,.price-pick:focus{background:#6036A0;color:#fff;border-color:#6036A0;transform:translateY(-1px)}
+@media(max-width:560px){.booking-form{grid-template-columns:1fr}.booking-field.full,.booking-submit{grid-column:1}.booking-body{padding:16px}.booking-head{padding:15px 17px}}
+
+
+.ticket-card{max-width:430px;margin:18px auto 12px;padding:20px;border:2px solid #6036A0;border-radius:14px;background:#fff;color:#302641;text-align:left;box-shadow:0 8px 22px #38205212}
+.ticket-card-head{display:flex;align-items:center;gap:12px;padding-bottom:12px;border-bottom:2px solid #e8def2}
+.ticket-card-logos{display:flex;align-items:center;gap:8px;flex:0 0 auto}
+.ticket-card-logos img{width:42px;height:46px;object-fit:contain}
+.ticket-card-logos img.logo-sivetra-print{width:82px;height:46px}
+.ticket-card-org{font:700 10px/1.4 Poppins,sans-serif;color:#43206B}
+.ticket-card-org small{display:block;font:500 8px/1.4 Inter,sans-serif;color:#756D80}
+.ticket-card-title{text-align:center;margin:14px 0 8px;font:800 13px Poppins,sans-serif;color:#43206B;letter-spacing:.8px}
+.ticket-card-date{text-align:center;font-size:10px;color:#756D80;margin-bottom:12px}
+.ticket-card-info{display:grid;grid-template-columns:105px 1fr;gap:7px 8px;font-size:11px}
+.ticket-card-info span{color:#756D80}.ticket-card-info strong{color:#302641;overflow-wrap:anywhere}
+.ticket-card-number-label{text-align:center;margin-top:15px;font:700 10px Poppins,sans-serif;color:#756D80}
+.ticket-card-number{text-align:center;margin-top:5px;padding:12px 8px;border:1px dashed #d5b65f;border-radius:10px;background:#fff;color:#43206B;font:800 30px Poppins,sans-serif;letter-spacing:1.5px}
+.ticket-card-foot{text-align:center;margin-top:12px;padding-top:9px;border-top:1px solid #eee7f5;font-size:9px;color:#756D80}
+.ticket-print-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;margin-top:10px;padding:11px 18px;border:0;border-radius:9px;background:linear-gradient(120deg,#6036A0,#43206B);color:#fff;font:800 11px Poppins,sans-serif;cursor:pointer}
+
+/* FIX KHUSUS: baris identitas kartu harus tersusun vertikal dan tidak menyempit */
+#ticketResult #printTicket .ticket-card-info{
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:stretch!important;
+  gap:7px!important;
+  width:100%!important;
+  max-width:390px!important;
+  margin:0 auto!important;
+  padding:0!important;
+}
+#ticketResult #printTicket .ticket-card-info > .ticket-info-row{
+  display:flex!important;
+  flex-direction:row!important;
+  align-items:flex-start!important;
+  justify-content:flex-start!important;
+  gap:10px!important;
+  width:100%!important;
+  min-width:0!important;
+  margin:0!important;
+  padding:0!important;
+  text-align:left!important;
+  white-space:normal!important;
+  font:500 11px/1.35 Arial,sans-serif!important;
+}
+#ticketResult #printTicket .ticket-card-info > .ticket-info-row > span{
+  display:block!important;
+  flex:0 0 105px!important;
+  width:105px!important;
+  min-width:105px!important;
+  margin:0!important;
+  padding:0!important;
+  text-align:left!important;
+  white-space:normal!important;
+  overflow-wrap:normal!important;
+  color:#756D80!important;
+}
+#ticketResult #printTicket .ticket-card-info > .ticket-info-row > strong{
+  display:block!important;
+  flex:1 1 auto!important;
+  width:auto!important;
+  min-width:0!important;
+  margin:0!important;
+  padding:0!important;
+  text-align:left!important;
+  white-space:normal!important;
+  overflow-wrap:anywhere!important;
+  word-break:normal!important;
+  color:#302641!important;
+}
+
+@media print {
+  @page { size: 100mm 75mm; margin: 0; }
+  html, body {
+    width:100mm!important;height:75mm!important;margin:0!important;padding:0!important;
+    overflow:hidden!important;background:#fff!important;
+    -webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;
+  }
+  body *{visibility:hidden!important}
+  #printTicket,#printTicket *{visibility:visible!important}
+  #printTicket{
+    display:block!important;position:fixed!important;left:0!important;top:0!important;
+    width:100mm!important;height:75mm!important;max-width:none!important;
+    margin:0!important;padding:4mm!important;box-sizing:border-box!important;
+    overflow:hidden!important;border:.7mm solid #6036A0!important;border-radius:2mm!important;
+    background:#fff!important;color:#302641!important;font-family:Arial,sans-serif!important;
+  }
+  #printTicket .ticket-card-head{
+    display:grid!important;grid-template-columns:34mm minmax(0,1fr)!important;
+    gap:2mm!important;align-items:center!important;margin:0!important;padding:0 0 2mm!important;
+    border:0!important;border-bottom:.25mm solid #e8def2!important;
+  }
+  #printTicket .ticket-card-logos{display:flex!important;align-items:center!important;gap:1mm!important;width:34mm!important}
+  #printTicket .ticket-card-logos img:first-child{display:block!important;width:10mm!important;height:11mm!important;margin:0!important;object-fit:contain!important}
+  #printTicket .ticket-card-logos img.logo-sivetra-print{display:block!important;width:22mm!important;height:11mm!important;margin:0!important;object-fit:contain!important}
+  #printTicket .ticket-card-org{display:block!important;min-width:0!important;text-align:left!important;color:#43206B!important;font:800 7pt/1.2 Arial,sans-serif!important}
+  #printTicket .ticket-card-org strong{display:block!important}
+  #printTicket .ticket-card-org small{display:block!important;margin-top:1mm!important;color:#62576f!important;font:600 6pt/1.2 Arial,sans-serif!important}
+  #printTicket .ticket-card-title{display:block!important;margin:2.5mm 0 1mm!important;text-align:center!important;color:#43206B!important;font:800 10pt/1.15 Arial,sans-serif!important}
+  #printTicket .ticket-card-date{display:block!important;margin:0 0 2mm!important;text-align:center!important;color:#51465f!important;font:600 7pt/1.2 Arial,sans-serif!important}
+  #printTicket .ticket-card-info{display:grid!important;grid-template-columns:minmax(0,1fr)!important;gap:1.5mm!important;width:100%!important;margin:0!important;padding:0 4mm!important}
+  #printTicket .ticket-info-row{display:grid!important;grid-template-columns:25mm minmax(0,1fr)!important;gap:2mm!important;align-items:start!important;font:500 7.5pt/1.2 Arial,sans-serif!important}
+  #printTicket .ticket-info-row span{color:#756D80!important}
+  #printTicket .ticket-info-row strong{display:block!important;min-width:0!important;color:#302641!important;overflow-wrap:anywhere!important}
+  #printTicket .ticket-card-number-label{display:block!important;margin:2.5mm 0 1mm!important;text-align:center!important;color:#756D80!important;font:700 7pt/1.2 Arial,sans-serif!important}
+  #printTicket .ticket-card-number{display:block!important;margin:0!important;padding:2mm!important;border:.3mm dashed #d5b65f!important;border-radius:2mm!important;background:#fff3cf!important;color:#43206B!important;text-align:center!important;font:800 22pt/1.1 Arial,sans-serif!important}
+  #printTicket .ticket-card-foot{display:block!important;margin:2mm 0 0!important;padding:1.5mm 0 0!important;border:0!important;border-top:.25mm solid #eee7f5!important;text-align:center!important;color:#756D80!important;font:500 5.8pt/1.2 Arial,sans-serif!important}
+  .ticket-print-btn,#ticketResult>h3,#ticketResult>p,footer,
+  #bookingOverlay .booking-head,#bookingOverlay .booking-summary,
+  #bookingOverlay .booking-form,#bookingOverlay .booking-help{display:none!important}
+  #bookingOverlay{display:block!important;position:static!important;inset:auto!important;width:auto!important;height:auto!important;margin:0!important;padding:0!important;overflow:visible!important;background:transparent!important}
+  #bookingOverlay .booking-modal,#bookingOverlay .booking-body,#ticketResult{
+    display:block!important;width:auto!important;height:auto!important;max-width:none!important;
+    margin:0!important;padding:0!important;border:0!important;border-radius:0!important;
+    box-shadow:none!important;background:transparent!important;
+  }
+
+  #printTicket .ticket-card-info{
+    display:flex!important;flex-direction:column!important;align-items:stretch!important;
+    gap:1.5mm!important;width:100%!important;max-width:none!important;
+    margin:0!important;padding:0 4mm!important;
+  }
+  #printTicket .ticket-card-info > .ticket-info-row{
+    display:flex!important;flex-direction:row!important;align-items:flex-start!important;
+    gap:2mm!important;width:100%!important;min-width:0!important;margin:0!important;padding:0!important;
+    text-align:left!important;white-space:normal!important;font:500 7.5pt/1.2 Arial,sans-serif!important;
+  }
+  #printTicket .ticket-card-info > .ticket-info-row > span{
+    display:block!important;flex:0 0 25mm!important;width:25mm!important;min-width:25mm!important;
+    margin:0!important;padding:0!important;text-align:left!important;white-space:normal!important;
+    color:#756D80!important;
+  }
+  #printTicket .ticket-card-info > .ticket-info-row > strong{
+    display:block!important;flex:1 1 auto!important;width:auto!important;min-width:0!important;
+    margin:0!important;padding:0!important;text-align:left!important;white-space:normal!important;
+    overflow-wrap:anywhere!important;word-break:normal!important;color:#302641!important;
+  }
+
+}
+</style>
+</head>
+<body>
+<header><div class="header-inner"><div class="brand"><img src="images/logo-pemprov.png" alt="Logo Pemerintah Provinsi NTT" class="logo-pemprov" onerror="this.hidden=true"><div class="divider"></div><a href="index.html" aria-label="SiVETRA Beranda"><img src="images/logo-sivetra.png" alt="Logo SiVETRA" class="logo-sivetra"></a></div><a class="back" href="index.html"><i class="fa-solid fa-arrow-left"></i> Kembali ke Beranda</a></div></header>
+<section class="hero"><span class="kicker">RUMAH SAKIT HEWAN UPTD VETERINER</span><h1>Rawat Inap &amp; Titip Sehat</h1><p>Layanan rawat inap dan penitipan hewan.</p></section>
+<main>
+<section class="reveal"><div class="section-title"><span class="table-kicker"><i class="fa-solid fa-hospital"></i> RAWAT INAP</span><h2>Ruang Perawatan Hewan</h2><p>Pilih ruang sesuai kondisi kesehatan hewan.</p></div>
+<div class="service-grid"><article class="service-card"><img class="room-photo" src="images/ruang-infeksius.png" alt="Foto Ruang Infeksius"><div class="service-icon"><i class="fa-solid fa-shield-virus"></i></div><h3>Ruang Infeksius</h3><p>Untuk hewan dengan penyakit menular.</p><span class="tag">RUANG ISOLASI</span></article><article class="service-card"><img class="room-photo" src="images/ruang-non-infeksius.png" alt="Foto Ruang Non-Infeksius"><div class="service-icon"><i class="fa-solid fa-heart-pulse"></i></div><h3>Ruang Non-Infeksius</h3><p>Untuk hewan yang tidak memerlukan isolasi.</p><span class="tag">PERAWATAN UMUM</span></article></div>
+<div class="price-shell" id="tarif-rawat-inap"><div class="price-head"><h2><i class="fa-solid fa-tags"></i> Estimasi Biaya Rawat Inap</h2><p>Tarif berdasarkan lama rawat dan pakan.</p></div><div class="table-scroll"><table class="price-table"><thead><tr><th>Jenis Ruangan</th><th>Lama Rawat</th><th>Pakan Disediakan</th><th>Pakan Dibawa Sendiri</th></tr></thead><tbody>
+<tr><td rowspan="4">Infeksius</td><td class="duration">1 Hari</td><td class="price">Rp 435.000</td><td class="price">Rp 410.000</td></tr><tr><td class="duration">3 Hari</td><td class="price">Rp 1.305.000</td><td class="price">Rp 1.230.000</td></tr><tr><td class="duration">5 Hari</td><td class="price">Rp 2.175.000</td><td class="price">Rp 2.050.000</td></tr><tr><td class="duration">7 Hari</td><td class="price">Rp 3.045.000</td><td class="price">Rp 2.870.000</td></tr>
+<tr><td rowspan="4">Non-Infeksius</td><td class="duration">1 Hari</td><td class="price">Rp 230.000</td><td class="price">Rp 205.000</td></tr><tr><td class="duration">3 Hari</td><td class="price">Rp 690.000</td><td class="price">Rp 615.000</td></tr><tr><td class="duration">5 Hari</td><td class="price">Rp 1.150.000</td><td class="price">Rp 1.025.000</td></tr><tr><td class="duration">7 Hari</td><td class="price">Rp 1.610.000</td><td class="price">Rp 1.435.000</td></tr>
+</tbody></table></div><div class="price-hint"><i class="fa-solid fa-circle-info"></i><span>Konfirmasi biaya akhir kepada petugas.</span></div></div></section>
+<section class="subsection reveal"><div class="section-title"><span class="table-kicker"><i class="fa-solid fa-house-heart"></i> TITIP SEHAT</span><h2>Penitipan Hewan Sehat</h2><p>Tarif penitipan per hari.</p></div>
+<div class="service-grid"><article class="service-card"><div class="service-icon"><i class="fa-solid fa-dog"></i></div><h3>Anjing</h3><p>Pilih pakan disediakan atau bawa sendiri.</p></article><article class="service-card"><div class="service-icon"><i class="fa-solid fa-cat"></i></div><h3>Kucing</h3><p>Pilih pakan dan pasir kucing.</p></article></div>
+<div class="price-shell"><div class="price-head"><h2><i class="fa-solid fa-calendar-day"></i> Estimasi Biaya Titip Sehat</h2><p>Tarif per hari.</p></div><div class="table-scroll"><table class="price-table"><thead><tr><th>Jenis Hewan</th><th>Pakan Disediakan</th><th>Pakan Dibawa Sendiri</th></tr></thead><tbody><tr><td>Anjing</td><td class="price">Rp 90.000/ hari</td><td class="price">Rp 65.000 / hari</td></tr><tr><td>Kucing</td><td class="price">Rp 60.000 / hari</td><td class="price">Rp 35.000/ hari</td></tr></tbody></table></div></div>
+<div class="price-shell"><div class="price-head"><h2><i class="fa-solid fa-box"></i> Pasir Kucing</h2><p>Tarif pasir kucing per hari.</p></div><div class="table-scroll"><table class="price-table"><thead><tr><th>Keterangan</th><th>Estimasi Biaya</th></tr></thead><tbody><tr><td>Pasir kucing disediakan</td><td class="price">Rp 15.000/ hari</td></tr><tr><td>Membawa pasir sendiri</td><td class="price">Tidak ada biaya tambahan</td></tr></tbody></table></div></div>
+<div class="requirements"><div class="requirements-icon"><i class="fa-solid fa-clipboard-check"></i></div><div><h2>Persyaratan Titip Sehat</h2><ul><li>Vaksinasi lengkap dan masih aktif.</li><li>Telah diberikan obat cacing.</li><li>Telah diberikan obat kutu.</li><li>Dalam kondisi sehat.</li></ul></div></div>
+</section>
+<div class="note reveal"><div class="note-icon"><i class="fa-solid fa-circle-info"></i></div><div><b>Informasi biaya</b><p>Acuan tarif: Perda Provinsi NTT Nomor 1 Tahun 2026.</p><p style="margin-top:7px"><a href="https://peraturan.bpk.go.id/Details/353222/perda-prov-nusa-tenggara-timur-no-1-tahun-2026-perubahan-atas-peraturan-daerah-p" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:6px;color:#6036A0;font-weight:700;text-decoration:underline"><i class="fa-solid fa-arrow-up-right-from-square"></i> Lihat Perda</a></p></div></div>
+<div class="cta reveal"><div><h2>Pendaftaran Online Rawat Inap & Titip Sehat</h2><p>Pilih jenis layanan dan tarif pada tabel untuk membuka formulir pendaftaran online SiVETRA.</p></div><a href="#tarif-rawat-inap"><i class="fa-solid fa-clipboard-list"></i> Pilih Tarif & Daftar</a></div>
+</main>
+<div class="booking-overlay" id="bookingOverlay" role="dialog" aria-modal="true" aria-labelledby="bookingTitle">
+ <div class="booking-modal">
+  <div class="booking-head"><h2 id="bookingTitle"><i class="fa-solid fa-clipboard-list"></i> Pendaftaran Rawat Inap & Titip Sehat</h2><button class="booking-close" type="button" id="bookingClose" aria-label="Tutup">&times;</button></div>
+  <div class="booking-body">
+   <div class="booking-summary" id="bookingSummary"></div>
+   <form class="booking-form" id="bookingForm">
+    <div class="booking-field"><label for="ownerName">Nama pemilik *</label><input id="ownerName" name="ownerName" required maxlength="100"></div>
+    <div class="booking-field"><label for="ownerPhone">Nomor WhatsApp *</label><input id="ownerPhone" name="ownerPhone" type="tel" required maxlength="20" placeholder="08xxxxxxxxxx"></div>
+    <div class="booking-field"><label for="animalName">Nama hewan *</label><input id="animalName" name="animalName" required maxlength="80"></div>
+    <div class="booking-field"><label for="animalType">Jenis hewan *</label><select id="animalType" name="animalType" required><option value="">Pilih</option><option>Anjing</option><option>Kucing</option><option>Sapi</option><option>Kerbau</option><option>Kuda</option><option>Kambing</option><option>Domba</option><option>Babi</option><option>Unggas</option><option>Lainnya</option></select></div>
+    <div class="booking-field"><label for="animalAge">Umur hewan</label><input id="animalAge" name="animalAge" placeholder="Contoh: 2 tahun"></div>
+    <div class="booking-field"><label for="animalWeight">Berat badan (kg)</label><input id="animalWeight" name="animalWeight" type="number" min="0" step="0.1"></div>
+    <div class="booking-field"><label for="visitDate">Tanggal kunjungan *</label><input id="visitDate" name="visitDate" type="date" required></div>
+    <div class="booking-field full"><label for="extraNotes">Keluhan / catatan tambahan</label><textarea id="extraNotes" name="extraNotes" maxlength="1000" placeholder="Catatan tambahan"></textarea></div>
+    <button class="booking-submit" id="bookingSubmit" type="submit"><i class="fa-solid fa-paper-plane"></i> Kirim Pendaftaran</button>
+   </form>
+   <div class="booking-help" id="bookingHelp">Pendaftaran online akan tercatat di sistem SiVETRA. Petugas akan menghubungi Anda untuk konfirmasi lebih lanjut.</div>
+   <div class="ticket-result" id="ticketResult"><h3>Pendaftaran diterima</h3><div class="ticket-number" id="ticketNumber"></div><p id="ticketDetails"></p>
+    <div class="ticket-card" id="printTicket">
+        <div class="ticket-card-head">
+          <div class="ticket-card-logos">
+            <img src="images/logo-pemprov.png" alt="Logo Pemprov NTT">
+            <img class="logo-sivetra-print" src="images/logo-sivetra.png" alt="Logo SiVETRA">
+          </div>
+          <div class="ticket-card-org">
+            <strong>PEMERINTAH PROVINSI NUSA TENGGARA TIMUR</strong>
+            <small>RUMAH SAKIT HEWAN UPTD VETERINER</small>
+          </div>
+        </div>
+        <div class="ticket-card-title">KARTU NOMOR ANTREAN</div>
+        <div class="ticket-card-date" id="printTicketDate">Tanggal Kunjungan: -</div>
+        <div class="ticket-card-info">
+          <div class="ticket-info-row"><span>Nama Pemilik</span><strong id="printOwnerName">-</strong></div>
+          <div class="ticket-info-row"><span>Nama Hewan</span><strong id="printAnimalName">-</strong></div>
+        </div>
+        <div class="ticket-card-number-label">NOMOR ANTREAN</div>
+        <div class="ticket-card-number" id="printTicketNumber">-</div>
+        <div class="ticket-card-foot">Harap simpan kartu ini dan tunjukkan kepada petugas saat berkunjung.</div>
+      </div>
+     <button type="button" class="ticket-print-btn" onclick="printQueueTicket()">
+      <i class="fa-solid fa-print"></i> Cetak Kartu Antrean
+    </button>
+     <p>Simpan nomor antrean ini dan tunjukkan kepada petugas saat datang.</p>
+</div>
+  </div>
+ </div>
+</div>
+
+<footer>&copy; <span id="tahun"></span> SiVETRA | Rumah Sakit Hewan UPTD Veteriner Provinsi NTT</footer>
+
+<script>
+document.getElementById("tahun").textContent=new Date().getFullYear();
+
+// Menampilkan bagian halaman yang menggunakan class "reveal".
+// Fallback memastikan konten tetap terlihat jika IntersectionObserver tidak tersedia.
+const revealItems = document.querySelectorAll(".reveal");
+if ("IntersectionObserver" in window) {
+ const revealObserver = new IntersectionObserver((entries, observer) => {
+  entries.forEach(entry => {
+   if (entry.isIntersecting) {
+    entry.target.classList.add("visible");
+    observer.unobserve(entry.target);
+   }
+  });
+ }, {threshold: 0.08});
+ revealItems.forEach(item => revealObserver.observe(item));
+} else {
+ revealItems.forEach(item => item.classList.add("visible"));
+}
+const FLOW_URL="https://script.google.com/macros/s/AKfycbx2-3r6gCRcvuRVR8tsPuVc0lS5ovoumgPjuoPKQp74txBzFQQI0AJvVNswvjiyuISi4g/exec";
+let selectedBooking=null;
+
+function escapeHtml(value){
+ return String(value).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+}
+function openBooking(button){
+ selectedBooking={service:button.dataset.service,group:button.dataset.group,price:button.dataset.price,category:"Rawat Inap & Titip Sehat"};
+ document.getElementById("bookingSummary").innerHTML=
+  "<strong>Layanan:</strong> "+escapeHtml(selectedBooking.service)+
+  "<br><strong>Kelompok:</strong> "+escapeHtml(selectedBooking.group)+
+  "<br><strong>Tarif:</strong> "+escapeHtml(selectedBooking.price);
+ document.getElementById("bookingForm").reset();
+ document.getElementById("bookingForm").style.display="grid";
+ document.getElementById("bookingHelp").style.display="block";
+ document.getElementById("ticketResult").classList.remove("show");
+ document.getElementById("bookingOverlay").classList.add("show");
+ document.body.style.overflow="hidden";
+}
+function closeBooking(){document.getElementById("bookingOverlay").classList.remove("show");document.body.style.overflow="";}
+document.getElementById("bookingClose").addEventListener("click",closeBooking);
+document.getElementById("bookingOverlay").addEventListener("click",e=>{if(e.target.id==="bookingOverlay")closeBooking();});
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closeBooking();});
+
+document.querySelectorAll(".price-table").forEach(table=>{
+ const headers=[...table.querySelectorAll("thead th")].map(th=>th.innerText.replace(/\s+/g," ").trim());
+ const rows=[...table.querySelectorAll("tbody tr")];
+ let activeFirstCell="";
+ rows.forEach(row=>{
+  const first=row.querySelector("td:first-child");
+  if(first && first.hasAttribute("rowspan")) activeFirstCell=first.innerText.trim();
+  else if(first && !first.classList.contains("duration")) activeFirstCell=first.innerText.trim();
+
+  row.querySelectorAll("td.price").forEach(td=>{
+   const original=td.innerText.trim();
+   const colIndex=[...row.children].indexOf(td);
+   const group=headers[colIndex] || "Tarif";
+   let service=activeFirstCell || "Layanan";
+   const duration=row.querySelector(".duration");
+   if(duration) service += " - "+duration.innerText.trim();
+   if(headers.some(h=>/pakan|pasir/i.test(h))) service=activeFirstCell || service;
+   const button=document.createElement("button");
+   button.type="button";button.className="price-pick";button.textContent=original;
+   button.dataset.service=service;button.dataset.group=group;button.dataset.price=original;
+   button.addEventListener("click",()=>openBooking(button));
+   td.replaceChildren(button);
+  });
+ });
+});
+
+const visitDate=document.getElementById("visitDate");
+const today=new Date();
+visitDate.min=[today.getFullYear(),String(today.getMonth()+1).padStart(2,"0"),String(today.getDate()).padStart(2,"0")].join("-");
+
+function printQueueTicket(){ window.print(); }
+
+document.getElementById("bookingForm").addEventListener("submit",async e=>{
+ e.preventDefault();if(!selectedBooking)return;
+ const submit=document.getElementById("bookingSubmit");
+ submit.disabled=true;submit.innerHTML='<i class="fa-solid fa-spinner fa-spin"></i> Mengirim...';
+ const formData=Object.fromEntries(new FormData(e.target).entries());
+ const payload={
+  namaPemilik:formData.ownerName,noWhatsApp:formData.ownerPhone,namaHewan:formData.animalName,
+  jenisHewan:formData.animalType,umurHewan:formData.animalAge,beratKg:formData.animalWeight,
+  tanggalKunjungan:formData.visitDate,keluhanCatatan:formData.extraNotes,
+  kategoriLayanan:selectedBooking.category,jenisLayanan:selectedBooking.service,
+  kelompokTarif:selectedBooking.group,tarif:selectedBooking.price,sumberPendaftaran:"Website SiVETRA"
+ };
+ try{
+  const response=await fetch(FLOW_URL,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(payload)});
+  if(!response.ok)throw new Error("Pengiriman gagal ("+response.status+").");
+  const result=await response.json();
+  if(!result.success||!result.ticketNumber)throw new Error(result.message||"Server belum mengembalikan nomor antrean.");
+  document.getElementById("bookingForm").style.display="none";
+  document.getElementById("bookingHelp").style.display="none";
+  document.getElementById("ticketNumber").textContent=result.ticketNumber;
+  document.getElementById("ticketDetails").textContent=selectedBooking.service+" — "+selectedBooking.price;
+   const selectedVisitDate = new Date(formData.visitDate + "T00:00:00");
+    document.getElementById("printTicketDate").textContent = "Tanggal Kunjungan: " + selectedVisitDate.toLocaleDateString("id-ID", {day:"2-digit", month:"long", year:"numeric"});
+   document.getElementById("printOwnerName").textContent = formData.ownerName;
+   document.getElementById("printAnimalName").textContent = formData.animalName;
+   document.getElementById("printTicketNumber").textContent = result.ticketNumber;
+    document.getElementById("printTicket").style.display = "block";
+  document.getElementById("ticketResult").classList.add("show");
+ }catch(err){
+  alert("Pendaftaran belum berhasil dikirim. Silakan coba kembali atau hubungi petugas. "+err.message);
+ }finally{
+  submit.disabled=false;submit.innerHTML='<i class="fa-solid fa-paper-plane"></i> Kirim Pendaftaran';
+ }
+});
+</script>
+
+</body></html>
